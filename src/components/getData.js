@@ -10,10 +10,12 @@ const getData = async function (id) {
         return await response.json()
         
         
+    
     } catch (error) {
         console.error(error.message);
     }
 }
 
+getData(1)
 
 export default getData
