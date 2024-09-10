@@ -1,24 +1,9 @@
-import React, { useState } from 'react';
-import PokemonInfo from './components/pokemonInfo.js'; // Ajuste o caminho conforme o seu projeto
+import PokemonPage from './pages/pokemonPage.js';
 
 const App = () => {
-  const [pokemonId, setPokemonId] = useState(1032); // Começando com o ID 1
-
-  const handleNext = () => {
-    setPokemonId((prevId) => (prevId <= 1025 ? prevId + 1 : 1)); // Incrementa ou volta ao início
-  };
-
-  const handlePrev = () => {
-    setPokemonId((prevId) => (prevId > 1 ? prevId - 1 : 1025)); // Decrementa ou vai para o final
-  };
 
   return (
-    <div>
-      <h1>Informações do Pokémon</h1>
-      <button onClick={handlePrev}>Anterior</button>
-      <button onClick={handleNext}>Próximo</button>
-      <PokemonInfo id={pokemonId} /> {/* Passa o ID atual para o componente */}
-    </div>
+    <PokemonPage/>
   );
 };
 

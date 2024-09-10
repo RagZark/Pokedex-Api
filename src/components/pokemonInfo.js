@@ -1,28 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import getData from './getData.js'; // Ajuste o caminho conforme o seu projeto
+import React from 'react';
+import usePokemon from '../components/usePokemon.js';
 
 const PokemonInfo = ({ id }) => {
-  const [pokemon, setPokemon] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // Função para buscar os dados do Pokémon
-  useEffect(() => {
-    const fetchPokemon = async () => {
-      setLoading(true);
-      setError(null); // Resetando erro
-      try {
-        const data = await getData(id);
-        setPokemon(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPokemon();
-  }, [id]); // Reexecuta quando o ID mudar
+  const { pokemon, loading, error } = usePokemon(id); // Usando o hook
 
   // Renderizando o estado de carregamento
   if (loading) {
@@ -40,10 +20,12 @@ const PokemonInfo = ({ id }) => {
   }
 
   // Renderizando os dados do Pokémon
+  // <img src={pokemon.sprites.other['official-artwork'].front_shiny} alt={pokemon.name} />
   return (
+    <div className='pokemon-info'>
+    <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+    <img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
     <div>
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-      <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
       <h3>Tipos:</h3>
       <ul>
         {pokemon.types.map((typeInfo) => (
@@ -56,7 +38,14 @@ const PokemonInfo = ({ id }) => {
           <li key={abilityInfo.slot}>{abilityInfo.ability.name}</li>
         ))}
       </ul>
+      <h3>Moves:</h3>
+      <ul>
+        {pokemon.moves.map((moveInfo) => (
+          <li key={moveInfo.slot}>{moveInfo.move.name}</li>
+        ))}
+      </ul>
     </div>
+  </div>
   );
 };
 
