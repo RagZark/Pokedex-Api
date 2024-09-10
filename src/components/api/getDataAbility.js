@@ -7,22 +7,12 @@ const getDataAbility= async function (name) {
             throw new Error(`Response status: ${response.status}`);
         }
 
-        const json = await response.json()
-
-        console.log(json.effect_entries[0].effect);
+        return await response.json()
         
-
-        // return await response.json()
-        
-        
-    
     } catch (error) {
         console.error(error.message);
     }
 }
-
-getDataAbility('overgrow')
-
 
 
 export default getDataAbility
