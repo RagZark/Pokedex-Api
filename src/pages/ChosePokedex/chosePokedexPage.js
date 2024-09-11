@@ -12,8 +12,8 @@ const ChosePokedex = () => {
                     <p>EsCoLhA SuA PoKeDeX</p>
                 </div>
                 <div className="chose-pokedex-images">
-                    <img src={pokedexRubyImage} alt="pokedex-ruby" />
-                    <img src={pokedexSapphireImage} alt="pokedex-sapphire" />
+                    <img className="pokedex-ruby" src={pokedexRubyImage} alt="pokedex-ruby" />
+                    <img className="pokedex-sapphire" src={pokedexSapphireImage} alt="pokedex-sapphire" />
                 </div>
             </div>
         </>

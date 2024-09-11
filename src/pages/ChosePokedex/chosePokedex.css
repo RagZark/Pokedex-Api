@@ -37,14 +37,22 @@
 }
 
 .chose-pokedex-text p{
+    letter-spacing: 0.3rem;
     font-size: 36px;
 }
 
 .chose-pokedex-images{
     max-height: 100%;
+    margin-bottom: 36px;
 }
 
 .chose-pokedex-images img{
     height: 540px;
     margin: 0 64px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.chose-pokedex-images img:hover{
+    transform: scale(1.05);
 }

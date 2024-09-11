@@ -21,7 +21,7 @@ const AbilityDetails = ({ name }) => {
   return (
     <div>
       <h3>{ability.name}</h3>
-      <p>{ability.effect_entries[0]?.short_effect}</p> {/* Exemplo de como usar os detalhes da habilidade */}
+      <p>{ability.effect_entries[0]?.short_effect}</p>
     </div>
   );
 };
