@@ -1,9 +1,10 @@
-import PokemonPage from './pages/pokemonPage.js';
+import ChosePokedex from './pages/ChosePokedex/chosePokedexPage.js';
+//import PokemonPage from './pages/pokemonPage.js';
 
 const App = () => {
 
   return (
-    <PokemonPage/>
+    <ChosePokedex/>
   );
 };
 
