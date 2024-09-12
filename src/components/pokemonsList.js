@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import getData from '../components/api/getData.js';
+import styled from 'styled-components';
 import './pokemonList.css';
+import PokemonDetails from './pokemonDetails.js';
 
 const PokemonList = () => {
-    const [pokemonIds, setPokemonIds] = useState(Array.from({ length: 10 }, (_, i) => i + 1)); // IDs de 1 a 10
+    const [pokemonIds, setPokemonIds] = useState(Array.from({ length: 10 }, (_, i) => i + 1));
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedPokemon, setSelectedPokemon] = useState(null);
+
+    const containerRef = useRef(null); // Referência para o container de scroll
 
     useEffect(() => {
         const fetchPokemons = async () => {
@@ -28,14 +33,22 @@ const PokemonList = () => {
     }, [pokemonIds]);
 
     const loadMorePokemons = () => {
+        // Salvar a posição de rolagem atual antes de adicionar mais Pokémons
+        const scrollPosition = containerRef.current.scrollTop;
+
         setPokemonIds((prevIds) => {
             const lastId = prevIds[prevIds.length - 1];
             const newIds = Array.from({ length: 10 }, (_, i) => lastId + i + 1);
             return [...prevIds, ...newIds];
         });
+
+        // Restaurar a posição de rolagem depois que o DOM for atualizado
+        setTimeout(() => {
+            containerRef.current.scrollTop = scrollPosition;
+        }, 0); // Tempo 0 para aguardar o re-render
     };
 
-    if (loading) {
+    if (loading && !pokemons.length) {
         return <p>Carregando Pokémons...</p>;
     }
 
@@ -45,23 +58,36 @@ const PokemonList = () => {
 
     return (
         <>
-            <div className='pokemon-main'>
-                <div className="pokemon-container">
-                    <div className="pokemon-list">
-                        {pokemons.map((pokemon, index) => (
-                            pokemon && (
-                                <div key={index} className="pokemon-item">
-                                    <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                                    <h3>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
-                                </div>
-                            )
-                        ))}
+            <div className='pokemon-list-details'>
+                <div className='pokemon-main'>
+                    <div className="pokemon-container lined-background">
+                        <div className="pokemon-list" ref={containerRef}>
+                            {pokemons.map((pokemon, index) => (
+                                pokemon && (
+                                    <div key={index} className="pokemon-item" onClick={() => setSelectedPokemon(pokemon)}>
+                                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                                        <NamePokemon className='pokemon-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</NamePokemon>
+                                    </div>
+                                )
+                            ))}
+                        </div>
                     </div>
+                    <button onClick={loadMorePokemons} className="load-more">Carregar Mais</button>
                 </div>
-                <button onClick={loadMorePokemons} className="load-more">Carregar Mais</button>
+                <PokemonDetails pokemon={selectedPokemon} />
             </div>
         </>
     );
 };
+
+
+
+const NamePokemon = styled.h3`
+    font-size: 20px;
+    color: #FFFFFF;
+    -webkit-text-stroke: .8px;
+    -webkit-text-stroke-color: #000000;
+    letter-spacing: 0.3px;
+`
 
 export default PokemonList;
