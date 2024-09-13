@@ -10,8 +10,7 @@ const PokemonList = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
-
-    const containerRef = useRef(null); // Referência para o container de scroll
+    const containerRef = useRef(null);
 
     useEffect(() => {
         const fetchPokemons = async () => {
@@ -33,7 +32,6 @@ const PokemonList = () => {
     }, [pokemonIds]);
 
     const loadMorePokemons = () => {
-        // Salvar a posição de rolagem atual antes de adicionar mais Pokémons
         const scrollPosition = containerRef.current.scrollTop;
 
         setPokemonIds((prevIds) => {
@@ -42,10 +40,9 @@ const PokemonList = () => {
             return [...prevIds, ...newIds];
         });
 
-        // Restaurar a posição de rolagem depois que o DOM for atualizado
         setTimeout(() => {
             containerRef.current.scrollTop = scrollPosition;
-        }, 0); // Tempo 0 para aguardar o re-render
+        }, 0);
     };
 
     if (loading && !pokemons.length) {

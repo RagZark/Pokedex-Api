@@ -1,12 +1,13 @@
 import React from 'react';
 import './pokemonDetails.css'; // Importar CSS para estilização
+import TypesPokemon from './typesPokemon.js';
 
 const PokemonDetails = ({ pokemon }) => {
     if (!pokemon) {
-        return <div className="pokemon-details">Selecione um Pokémon para ver os detalhes.</div>;
+        return <div className="pokemon-details no-pokemon"><h2>Aguardando a seleção de um pokemon...</h2></div>;
     }
 
-    const { id, name, sprites, types } = pokemon;
+    const { id, name, sprites } = pokemon;
     const formattedId = `#${id.toString().padStart(4, '0')}`;
 
     return (
@@ -19,11 +20,7 @@ const PokemonDetails = ({ pokemon }) => {
                 </div>
 
                 <div className='pokemon-details-types'>
-                    <ul>
-                        {types.map((typeInfo, index) => (
-                            <li key={index}>{typeInfo.type.name.toUpperCase()}</li>
-                        ))}
-                    </ul>
+                    <TypesPokemon pokemon={pokemon}/>
                 </div>
             </div>
         </>
