@@ -19,8 +19,8 @@ const ChosePokedex = () => {
             <Titulo>PoKéMoN</Titulo>
             <TextoChosePokedex>EsCoLhA SuA PoKeDeX</TextoChosePokedex>
             <div className="chose-pokedex-images">
-                <img className="pokedex-ruby" onClick={() => {handleClick('ruby', '#890000'); navigate('/pokedex');}} src={pokedexRubyImage} alt="pokedex-ruby" />
-                <img className="pokedex-sapphire" onClick={() => {handleClick('sapphire', '#130341'); navigate('/pokedex');}} src={pokedexSapphireImage} alt="pokedex-sapphire" />
+                <img className="pokedex-ruby" onClick={() => {handleClick('ruby', '#DC0A2D'); navigate('/pokedex');}} src={pokedexRubyImage} alt="pokedex-ruby" />
+                <img className="pokedex-sapphire" onClick={() => {handleClick('sapphire', '#0A77DC'); navigate('/pokedex');}} src={pokedexSapphireImage} alt="pokedex-sapphire" />
             </div>
         </div>
     );

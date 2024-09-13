@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import getData from '../components/api/getData.js';
+import getData from '../components/api/getData.js'; // Ajuste o caminho conforme necessário
 import styled from 'styled-components';
 import './pokemonList.css';
 import PokemonDetails from './pokemonDetails.js';
@@ -65,7 +65,9 @@ const PokemonList = () => {
                                 pokemon && (
                                     <div key={index} className="pokemon-item" onClick={() => setSelectedPokemon(pokemon)}>
                                         <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                                        <NamePokemon className='pokemon-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</NamePokemon>
+                                        <NamePokemon className='pokemon-name'>
+                                            {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                                        </NamePokemon>
                                     </div>
                                 )
                             ))}
@@ -75,7 +77,11 @@ const PokemonList = () => {
                 </div>
                 <div className='pokemon-information'>
                     <PokemonDetails pokemon={selectedPokemon} />
-                    <button onClick={() => navigate(`/pokemon/${selectedPokemon.id}`)} className="load-more" disabled={!selectedPokemon}>
+                    <button
+                        onClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`)}
+                        className="load-more"
+                        disabled={!selectedPokemon}
+                    >
                         Mais Informações
                     </button>
                 </div>
@@ -83,7 +89,6 @@ const PokemonList = () => {
         </>
     );
 };
-
 
 
 const NamePokemon = styled.h3`

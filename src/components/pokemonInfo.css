@@ -1,0 +1,21 @@
+.pokemon-info{
+    display: flex;
+}
+
+.pokemon-name-image{
+    display: flex;
+}
+
+.types{
+    display: flex;
+}
+
+.habilities{
+    display: flex;
+}
+
+.moves{
+    display: flex;
+    height: 300px;
+    width: 300px;
+}

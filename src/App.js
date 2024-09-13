@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import ChosePokedex from './pages/ChosePokedex/chosePokedexPage.js';
 import Pokedex from './pages/Pokedex/pokedexPage.js';
-import PokemonPage from './pages/pokemonPage.js';
+import PokemonPage from './pages/PokemonPage/pokemonPage.js';
 import Rodape from './components/footer/footer.js';
 import Navbar from './components/navbar/navbar.js';
 import { BackgroundProvider } from './components/backgroundContext.js';
