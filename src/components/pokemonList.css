@@ -1,10 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/pokemon-fire-red');
 
-*{
-  font-family: 'Pokemon Fire Red', sans-serif;
-}
-
 .pokemon-list-details{
+  font-family: 'Pokemon Fire Red', sans-serif;
   display: flex;
   justify-content: space-around;
 }
@@ -88,15 +85,23 @@
     background-color: #90EE90;
     font-size: 18px;
     font-weight: 600;
+    color: #000000;
     border: 2px solid black;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.3s ease;
+    transition: 0.3s ease-in;
     border-radius: 8px;
+    box-shadow: inset -4px -4px 2px 0px rgba(36, 79, 36, 1);
   }
   
   .load-more:hover{
-    transform: scale(1.1);
+    background-color: rgba(36, 79, 36);
+    transform: scale(.99);
+  }
+
+  .pokemon-information{
+    display: flex;
+    flex-direction: column;
   }

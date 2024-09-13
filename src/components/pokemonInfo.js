@@ -3,7 +3,7 @@ import usePokemon from '../components/usePokemon.js';
 import PokemonAbilities from './pokemonAbilities.js';
 
 const PokemonInfo = ({ id }) => {
-  const { pokemon, abilities, loading, error } = usePokemon(id); // Incluindo abilities aqui
+  const { pokemon, abilities, loading, error } = usePokemon(id);
 
   if (loading) {
     return <p>Carregando Pokémon...</p>;
@@ -30,7 +30,7 @@ const PokemonInfo = ({ id }) => {
         </ul>
         <h3>Habilidades:</h3>
         <ul>
-          <PokemonAbilities abilityNames={abilities} /> {/* Passa os nomes das habilidades */}
+          <PokemonAbilities abilityNames={abilities} />
         </ul>
         <h3>Moves:</h3>
         <ul>

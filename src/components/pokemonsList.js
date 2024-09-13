@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import getData from '../components/api/getData.js';
 import styled from 'styled-components';
 import './pokemonList.css';
@@ -11,6 +12,7 @@ const PokemonList = () => {
     const [error, setError] = useState(null);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
     const containerRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPokemons = async () => {
@@ -71,7 +73,12 @@ const PokemonList = () => {
                     </div>
                     <button onClick={loadMorePokemons} className="load-more">Carregar Mais</button>
                 </div>
-                <PokemonDetails pokemon={selectedPokemon} />
+                <div className='pokemon-information'>
+                    <PokemonDetails pokemon={selectedPokemon} />
+                    <button onClick={() => navigate(`/pokemon/${selectedPokemon.id}`)} className="load-more" disabled={!selectedPokemon}>
+                        Mais Informações
+                    </button>
+                </div>
             </div>
         </>
     );

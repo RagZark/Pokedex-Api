@@ -1,20 +1,24 @@
-import React from "react"
-import styled from "styled-components"
-import imgBkgFooterRuby from '../../img/background-footer-ruby.png'
+import React from "react";
+import styled from "styled-components";
+import { useBackground } from '../../components/backgroundContext.js';
+import imgBkgFooterRuby from '../../img/background-footer-ruby.png';
+import imgBkgFooterSapphire from '../../img/background-footer-sapphire.png';
 
 const Rodape = () => {
-    return(<>
-        <RodapeUse/>
-    </>)
+    const { backgroundImage } = useBackground();
+
+    const backgroundImageUrl = backgroundImage === 'ruby' ? imgBkgFooterRuby : imgBkgFooterSapphire;
+
+    return (
+        <RodapeUse style={{ backgroundImage: `url(${backgroundImageUrl})` }} />
+    );
 }
 
 const RodapeUse = styled.footer`
-    height:75px;
-    background-color: #EF0D0E;
-    background-image: url(${imgBkgFooterRuby});
+    height: 70px;
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: inset 0px 8px 8px 2px rgba(0, 0, 0, .75);
-`
+`;
 
-export default Rodape
+export default Rodape;
