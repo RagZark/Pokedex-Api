@@ -1,10 +1,11 @@
 import React from 'react';
-import useAbility from './useAbility.js';
+import useAbility from '../usemodels/useAbility.js';
+import styled from 'styled-components';
 
 const PokemonAbilities = ({ abilityNames }) => {
   return (
     <div>
-      <h3>Habilidades:</h3>
+      <h2>Habilidades:</h2>
       {abilityNames.map((name) => (
         <AbilityDetails key={name} name={name} />
       ))}
@@ -20,10 +21,14 @@ const AbilityDetails = ({ name }) => {
 
   return (
     <div>
-      <h3>{ability.name}</h3>
-      <p>{ability.effect_entries[0]?.short_effect}</p>
+      <p><StyleNameAbility>{ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}:</StyleNameAbility> {ability.effect_entries[1]?.short_effect}</p>
     </div>
   );
 };
+
+const StyleNameAbility = styled.span`
+  font-size: 20px;
+  font-weight: 600;
+`
 
 export default PokemonAbilities;

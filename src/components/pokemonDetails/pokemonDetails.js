@@ -1,6 +1,6 @@
 import React from 'react';
 import './pokemonDetails.css'; // Importar CSS para estilização
-import TypesPokemon from './typesPokemon.js';
+import TypesPokemon from '../pokemonTypes/typesPokemon.js';
 
 const PokemonDetails = ({ pokemon }) => {
     if (!pokemon) {

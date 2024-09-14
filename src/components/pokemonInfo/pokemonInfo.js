@@ -1,8 +1,8 @@
 import React from 'react';
-import usePokemon from '../components/usePokemon.js';
-import PokemonAbilities from './pokemonAbilities.js';
+import usePokemon from '../usemodels/usePokemon.js';
+import PokemonAbilities from '../pokemonAbilities/pokemonAbilities.js';
 import './pokemonInfo.css'
-import TypesPokemon from './typesPokemon.js';
+import TypesPokemon from '../pokemonTypes/typesPokemon.js';
 
 const PokemonInfo = ({ id }) => {
   const { pokemon, abilities, loading, error } = usePokemon(id);
@@ -21,19 +21,11 @@ const PokemonInfo = ({ id }) => {
 
   return (
     <div className='pokemon-info'>
-      <div className='pokemon-name-image'>
-        <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+      <div className='pokemon-base-info'>
+        <p>ID: #{pokemon.id.toString().padStart(4, '0')}</p>
         <img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
-      </div>
-      <div className='types'>
-        <h3>Tipos:</h3>
-        <TypesPokemon pokemon={pokemon}/>
-      </div>
-      <div className='habilities'>
-        <h3>Habilidades:</h3>
-        <ul>
-          <PokemonAbilities abilityNames={abilities} />
-        </ul>
+        <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+        <TypesPokemon className='types' pokemon={pokemon}/>
       </div>
       <div className='moves'>
         <h3>Moves:</h3>
@@ -41,6 +33,11 @@ const PokemonInfo = ({ id }) => {
           {pokemon.moves.map((moveInfo) => (
             <li key={moveInfo.slot}>{moveInfo.move.name}</li>
           ))}
+        </ul>
+      </div>
+      <div className='abilities-container'>
+        <ul>
+          <PokemonAbilities abilityNames={abilities} />
         </ul>
       </div>
     </div>

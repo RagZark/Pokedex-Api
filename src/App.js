@@ -5,7 +5,7 @@ import Pokedex from './pages/Pokedex/pokedexPage.js';
 import PokemonPage from './pages/PokemonPage/pokemonPage.js';
 import Rodape from './components/footer/footer.js';
 import Navbar from './components/navbar/navbar.js';
-import { BackgroundProvider } from './components/backgroundContext.js';
+import { BackgroundProvider } from './components/backgroundContext/backgroundContext.js';
 
 const App = () => {
   return (

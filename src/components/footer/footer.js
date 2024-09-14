@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useBackground } from '../../components/backgroundContext.js';
+import { useBackground } from '../../components/backgroundContext/backgroundContext.js';
 import imgBkgFooterRuby from '../../img/background-footer-ruby.png';
 import imgBkgFooterSapphire from '../../img/background-footer-sapphire.png';
 

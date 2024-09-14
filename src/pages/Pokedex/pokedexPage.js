@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useBackground } from '../../components/backgroundContext.js';
-import PokemonList from '../../components/pokemonsList.js';
+import { useBackground } from '../../components/backgroundContext/backgroundContext.js'
+import PokemonList from '../../components/pokemonList/pokemonsList.js';
 import '../../../src/reset.css';
 
 const Pokedex = () => {

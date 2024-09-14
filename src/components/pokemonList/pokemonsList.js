@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import getData from '../components/api/getData.js'; // Ajuste o caminho conforme necessário
+import getData from '../api/getData.js'; // Ajuste o caminho conforme necessário
 import styled from 'styled-components';
 import './pokemonList.css';
-import PokemonDetails from './pokemonDetails.js';
+import PokemonDetails from '../pokemonDetails/pokemonDetails.js';
 
 const PokemonList = () => {
     const [pokemonIds, setPokemonIds] = useState(Array.from({ length: 10 }, (_, i) => i + 1));

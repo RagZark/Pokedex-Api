@@ -3,7 +3,7 @@ import "./chosePokedex.css";
 import pokedexRubyImage from "../../img/pokedex-ruby.png";
 import pokedexSapphireImage from "../../img/pokedex-sapphire.png";
 import { useNavigate } from "react-router-dom";
-import { useBackground } from '../../components/backgroundContext.js';
+import { useBackground } from '../../components/backgroundContext/backgroundContext.js';
 import styled from "styled-components";
 
 const ChosePokedex = () => {

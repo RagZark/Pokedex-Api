@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import imgBkgNavBarRuby from '../../img/pokedex-header-ruby.png'
 import imgBkgNavBarSapphire from '../../img/pokedex-header-sapphire.png'
-import { useBackground } from "../backgroundContext.js"
+import { useBackground } from "../backgroundContext/backgroundContext.js"
 
 const Navbar = () => {
 
