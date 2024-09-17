@@ -1,10 +1,9 @@
 .pokemon-info{
     display: flex;
-
+    padding-top: 20px;
 }
 
 .pokemon-base-info{
-    margin-top:20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,11 +32,16 @@
 
 .moves ul{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
     gap: 16px;
     justify-items: center;
     list-style: none;
     overflow-y: auto;
+}
+
+.abilities-container{
+
 }
 
 .abilities-container div{
