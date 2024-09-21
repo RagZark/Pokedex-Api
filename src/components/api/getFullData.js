@@ -19,6 +19,7 @@ const doRequest = async (url) => {
 const getFullData = async function (id) {
     let fullData = {
         BaseInfo: {
+            id: Number,
             name: "",
             abilities: [],
             moves: [],
@@ -26,8 +27,8 @@ const getFullData = async function (id) {
             species: {},
             sprites: {
                 frontDefault: null,
-                other:{
-                    'official-artwork':{
+                other: {
+                    'official-artwork': {
                         frontDefault: '',
                         frontShiny: ''
                     }
@@ -42,31 +43,33 @@ const getFullData = async function (id) {
         },
         Species: {
             evolution_chain: {
-                url: ""
+                url: ''
             }
         },
         EvolutionChain: {
-            evolves_to: {
-                specie_name: '',
-                evolves_to: {
-                    specie_name: ''
-                }
+            firstEvolution: {
+                evoName: [],
+                frontDefault: ''
+            },
+            secondEvolution: {
+                evoName: [],
+                frontDefault: ''
             }
         }
     }
 
-    //await doRequest(`${baseURL}/ability/`)
-
     const baseInfo = fullData.BaseInfo = await doRequest(`${baseURL}/pokemon/${id}`);
     if (baseInfo) {
         fullData.BaseInfo = baseInfo
-        fullData.BaseInfo.moves = fullData.BaseInfo.moves.map(move => move.move.name);
-        fullData.BaseInfo.types = fullData.BaseInfo.types.map(type => type.type.name);
-        fullData.BaseInfo.sprites.frontDefault = fullData.BaseInfo.sprites.front_default;
-        fullData.BaseInfo.sprites.other["official-artwork"].frontDefault = fullData.BaseInfo.sprites.other["official-artwork"].front_default;
-        fullData.BaseInfo.sprites.other["official-artwork"].frontShiny = fullData.BaseInfo.sprites.other["official-artwork"].front_shiny;
+        fullData.BaseInfo.name = baseInfo.name
+        fullData.BaseInfo.id = baseInfo.id
+        fullData.BaseInfo.moves = baseInfo.moves.map(move => move.move.name);
+        fullData.BaseInfo.types = baseInfo.types.map(type => type.type.name);
+        fullData.BaseInfo.sprites.frontDefault = baseInfo.sprites.front_default;
+        fullData.BaseInfo.sprites.other["official-artwork"].frontDefault = baseInfo.sprites.other["official-artwork"].front_default;
+        fullData.BaseInfo.sprites.other["official-artwork"].frontShiny = baseInfo.sprites.other["official-artwork"].front_shiny;
 
-        const abilityName = fullData.Abilities.ability.name = fullData.BaseInfo.abilities.map((ability) => ability.ability.name);
+        const abilityName = fullData.Abilities.ability.name = baseInfo.abilities.map((ability) => ability.ability.name);
 
         if (abilityName) {
             const abilityDescription = abilityName.map(async abilityName => await doRequest(`${baseURL}/ability/${abilityName}`).then(response => {
@@ -75,30 +78,44 @@ const getFullData = async function (id) {
             fullData.Abilities.ability.description = await Promise.all(abilityDescription).then(values => { return values; });
         }
 
-        const species = fullData.Species = await doRequest(`${baseURL}/pokemon-species/${fullData.BaseInfo.name}`)
+        const species = fullData.Species = await doRequest(`${baseURL}/pokemon-species/${baseInfo.name}`)
         if (species) {
             fullData.Species = species
-
-            if (fullData.Species.evolution_chain?.url) {
+            
+            if (species.evolution_chain?.url) {
                 const evolutionChain = fullData.EvolutionChain = await doRequest(fullData.Species.evolution_chain.url)
+                 
                 if (evolutionChain) {
                     fullData.EvolutionChain = evolutionChain
-                    console.log(evolutionChain);
+                    const haveEvo = evolutionChain.firstEvolution = evolutionChain.chain.evolves_to
                     
-                    // console.log(evolutionChain.chain.evolves_to[0]?.species.name);
-                    // console.log(evolutionChain.chain.evolves_to[0]?.evolves_to[0].species.name);
+                    if (haveEvo.length !== 0) {
+                        evolutionChain.firstEvolution.evoName = [];
+                        haveEvo?.map(firstEvoName => evolutionChain.firstEvolution.evoName.push(firstEvoName.species.name))
+
+                        evolutionChain.secondEvolution = []
+                        const haveSecondEvo = haveEvo.map(content => content)
+
+                        if (haveSecondEvo) {
+                            evolutionChain.secondEvolution.evoName = []
+                            haveSecondEvo.forEach(secondEvoArray => {
+                                secondEvoArray.evolves_to.map(content => evolutionChain.secondEvolution.evoName.push(content.species.name));
+                            })
+                            if (evolutionChain.secondEvolution.evoName.length === 0) {
+                                evolutionChain.secondEvolution.evoName = null
+                            }
+                        }
+                    } else{
+                        evolutionChain.firstEvolution.evoName = null
+                    }
                 }
             }
         }
     }
 
-
-
     // REACT CACHE
 
     return fullData
 }
-
-getFullData(5)
 
 export default getFullData
