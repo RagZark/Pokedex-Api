@@ -1,121 +1,126 @@
-const baseURL = `https://pokeapi.co/api/v2`
+/*
+
+// 1.
+Aplicar o chache para a função doRequest
+recomendo essa lib
+https://www.npmjs.com/package/node-cache
+Para gravar :
+  myCache.set( "URL-DA-API", retornoDaApi, 10000 );
+Para ler:
+  myCache.get( "URL-DA-API" );
+Testar com logs para ver se esta pegando do cache ou do fetch
+
+// 2.
+carregar as evoluções de cada  pokemom 
+com a funcao getSmallerInfoByName 
+
+// 3.
+rever as informações do `getFullData.to_return` 
+para ver o que voce usa e o que não usa 
+e adicionar apenas o que for usar.
+se for usar outra chamada de api, criar uma função para ela.
+*/
+
+const baseURL = `https://pokeapi.co/api/v2`;
 
 const doRequest = async (url) => {
-    // Se URL estiver no cache, retorno o cache
-    // Se não, faço o fetch
-    try {
-        const response = await fetch(url)
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        // Salvar a resposta no cache
-        return await response.json()
-    } catch (error) {
-        console.log(error.message);
-        return null;
+  // Se URL estiver no cache, retorno o cache
+  // Se não, faço o fetch
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
     }
-}
+    // Salvar a resposta no cache
+    return await response.json();
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
 
 const getFullData = async function (id) {
-    let fullData = {
-        BaseInfo: {
-            id: Number,
-            name: "",
-            abilities: [],
-            moves: [],
-            types: [],
-            species: {},
-            sprites: {
-                frontDefault: null,
-                other: {
-                    'official-artwork': {
-                        frontDefault: '',
-                        frontShiny: ''
-                    }
-                }
-            }
-        },
-        Abilities: {
-            ability: {
-                name: [],
-                description: []
-            }
-        },
-        Species: {
-            evolution_chain: {
-                url: ''
-            }
-        },
-        EvolutionChain: {
-            firstEvolution: {
-                evoName: [],
-                frontDefault: ''
-            },
-            secondEvolution: {
-                evoName: [],
-                frontDefault: ''
-            }
-        }
+  const baseInfo = await doRequest(`${baseURL}/pokemon/${id}`);
+  if (!baseInfo) {
+    return null;
+  }
+
+  const to_return = {
+    id: baseInfo.id,
+    name: baseInfo.name,
+    abilities: await getAbility(baseInfo),
+    moves: baseInfo.moves.map((move) => move.move.name),
+    types: baseInfo.types.map((type) => type.type.name),
+    pixelImage: baseInfo.sprites.front_default,
+    animeImage: baseInfo.sprites.other["official-artwork"].front_default,
+    animeShinyImage: baseInfo.sprites.other["official-artwork"].front_shiny,
+    evolutions: await getEvolutions(baseInfo),
+  };
+  myLog(to_return)
+};
+
+const getAbility = async (baseInfo) => {
+  const abilities = await Promise.all(
+    baseInfo.abilities.map(
+      async (ability) =>
+        await doRequest(`${baseURL}/ability/${ability.ability.name}`).then(
+          (response) => {
+            return {
+              name: ability.ability.name,
+              description: response.effect_entries[1].effect,
+            };
+          },
+        ),
+    ),
+  ).then((values) => {
+    return values;
+  });
+  return abilities;
+};
+
+const getEvolutions = async (baseInfo) => {
+  const species = await doRequest(
+    `${baseURL}/pokemon-species/${baseInfo.name}`,
+  );
+
+  let evolutionChain = {};
+
+  if (species?.evolution_chain?.url) {
+    const evolutionChainFromApi = await doRequest(species.evolution_chain.url);
+
+    if (evolutionChain) {
+      evolutionChain.firstEvolution =
+        await Promise.all (evolutionChainFromApi.chain.evolves_to?.map(async (content) => ({
+          id: content.species.url.split("/")[6],
+          name: content.species.name,
+          imageAndTypes: await getSmallerInfoByName(content.species.url.split("/")[6]),
+          url: species.evolution_chain.url,
+          secondEvolution: await Promise.all(content.evolves_to?.map(async (content) => ({
+            id: content.species.url.split("/")[6],
+            name: content.species.name,
+            imageAndTypes: await getSmallerInfoByName(content.species.url.split("/")[6]),
+            url: species.evolution_chain.url
+          }))),
+        })));
     }
+  }
+  return evolutionChain;
+};
 
-    const baseInfo = fullData.BaseInfo = await doRequest(`${baseURL}/pokemon/${id}`);
-    if (baseInfo) {
-        fullData.BaseInfo = baseInfo
-        fullData.BaseInfo.name = baseInfo.name
-        fullData.BaseInfo.id = baseInfo.id
-        fullData.BaseInfo.moves = baseInfo.moves.map(move => move.move.name);
-        fullData.BaseInfo.types = baseInfo.types.map(type => type.type.name);
-        fullData.BaseInfo.sprites.frontDefault = baseInfo.sprites.front_default;
-        fullData.BaseInfo.sprites.other["official-artwork"].frontDefault = baseInfo.sprites.other["official-artwork"].front_default;
-        fullData.BaseInfo.sprites.other["official-artwork"].frontShiny = baseInfo.sprites.other["official-artwork"].front_shiny;
+const myLog = (data) => {
+  console.log(JSON.stringify(data, null, 4));
+};
 
-        const abilityName = fullData.Abilities.ability.name = baseInfo.abilities.map((ability) => ability.ability.name);
+const getSmallerInfoByName = async (id) => {
+  const pokemon = await doRequest(`${baseURL}/pokemon/${id}`)
 
-        if (abilityName) {
-            const abilityDescription = abilityName.map(async abilityName => await doRequest(`${baseURL}/ability/${abilityName}`).then(response => {
-                return response.effect_entries[1].effect
-            }));
-            fullData.Abilities.ability.description = await Promise.all(abilityDescription).then(values => { return values; });
-        }
+  return {
+    frontDefault: pokemon.sprites?.other["official-artwork"].front_default,
+    frontShinyDefault: pokemon.sprites?.other["official-artwork"].front_shiny,
+    types: pokemon.types.map((type) => type.type.name),
+  };
+};
 
-        const species = fullData.Species = await doRequest(`${baseURL}/pokemon-species/${baseInfo.name}`)
-        if (species) {
-            fullData.Species = species
-            
-            if (species.evolution_chain?.url) {
-                const evolutionChain = fullData.EvolutionChain = await doRequest(fullData.Species.evolution_chain.url)
-                 
-                if (evolutionChain) {
-                    fullData.EvolutionChain = evolutionChain
-                    const haveEvo = evolutionChain.firstEvolution = evolutionChain.chain.evolves_to
-                    
-                    if (haveEvo.length !== 0) {
-                        evolutionChain.firstEvolution.evoName = [];
-                        haveEvo?.map(firstEvoName => evolutionChain.firstEvolution.evoName.push(firstEvoName.species.name))
-
-                        evolutionChain.secondEvolution = []
-                        const haveSecondEvo = haveEvo.map(content => content)
-
-                        if (haveSecondEvo) {
-                            evolutionChain.secondEvolution.evoName = []
-                            haveSecondEvo.forEach(secondEvoArray => {
-                                secondEvoArray.evolves_to.map(content => evolutionChain.secondEvolution.evoName.push(content.species.name));
-                            })
-                            if (evolutionChain.secondEvolution.evoName.length === 0) {
-                                evolutionChain.secondEvolution.evoName = null
-                            }
-                        }
-                    } else{
-                        evolutionChain.firstEvolution.evoName = null
-                    }
-                }
-            }
-        }
-    }
-
-    // REACT CACHE
-
-    return fullData
-}
+getFullData(1)
 
 export default getFullData
