@@ -6,6 +6,7 @@ import PokemonPage from './pages/PokemonPage/pokemonPage.js';
 import Rodape from './components/footer/footer.js';
 import Navbar from './components/navbar/navbar.js';
 import { BackgroundProvider } from './components/backgroundContext/backgroundContext.js';
+import PokeInfo from './components/test.js';
 
 const App = () => {
   return (

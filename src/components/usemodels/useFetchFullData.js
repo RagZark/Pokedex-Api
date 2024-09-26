@@ -1,30 +1,30 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
+import getFullData from '../api/getFullData.js';
 
-const useFetchFullData = (fetchFunction, dependency) => {
-    const[data, setData] = useState(null);
-    const[error, setError] = useState(null);
-    const[loading, setLoading] = useState(true);
+const usePokemonFullData = (pokemonId) => {
+    const [pokemonData, setPokemonData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchFullData = async () =>{
+        const fetchData = async () => {
             setLoading(true);
             setError(null);
-
-            try{
-                const result = await fetchFunction(dependency);
-                setData(result)    
-            } catch (err){
-                setError(err.message)
-            } finally{
-                setLoading(false)
+            try {
+                setPokemonData(await getFullData(pokemonId));
+            } catch (err) {
+                setError("Failed to fetch Pokémon data");
+            } finally {
+                setLoading(false);
             }
-        }
-        if(dependency){
-            fetchFullData();
-        }
-    }, [fetchFunction, dependency])
+        };
 
-    return {data, loading, error}
-}
+        if (pokemonId) {
+            fetchData();
+        }
+    }, [pokemonId]);
 
-export default useFetchFullData
+    return { pokemonData, loading, error };
+};
+
+export default usePokemonFullData;

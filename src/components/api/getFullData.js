@@ -44,7 +44,7 @@ const getFullData = async function (id) {
         evolutions: await getEvolutions(baseInfo),
     };
     myLog(to_return.evolutions)
-};
+}
 
 const getAbility = async (baseInfo) => {
     const abilities = await Promise.all(
@@ -74,9 +74,12 @@ const getEvolutions = async (baseInfo) => {
 
     if (species?.evolution_chain?.url) {
         const evolutionChainFromApi = await doRequest(species.evolution_chain.url);
-        // evolutionChain.originalSpecie = {
-        //     evolutionChainFromApi.species
-        // }
+        
+        evolutionChain.originalPokemon = {
+            id: evolutionChainFromApi.chain.species.url.split("/")[6],
+            name: evolutionChainFromApi.chain.species.name,
+            imageAndTypes: await getSmallerInfoByName(evolutionChainFromApi.chain.species.url.split("/")[6])
+        };
 
         if (evolutionChain) {
             evolutionChain.firstEvolution =
