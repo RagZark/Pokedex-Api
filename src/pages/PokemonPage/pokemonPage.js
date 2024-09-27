@@ -11,13 +11,13 @@ const PokemonPage = () => {
     const [pokemonId, setPokemonId] = useState(Number(id));
     const { backgroundColor } = useBackground()
 
-    const handleNext = () => {
-        setPokemonId(prevId => (prevId <= 1025 ? prevId + 1 : 1));
-    };
+    // const handleNext = () => {
+    //     setPokemonId(prevId => (prevId <= 1025 ? prevId + 1 : 1));
+    // };
 
-    const handlePrev = () => {
-        setPokemonId(prevId => (prevId > 1 ? prevId - 1 : 1025));
-    };
+    // const handlePrev = () => {
+    //     setPokemonId(prevId => (prevId > 1 ? prevId - 1 : 1025));
+    // };
 
     useEffect(() => {
         setPokemonId(Number(id));

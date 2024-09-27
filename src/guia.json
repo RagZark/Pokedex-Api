@@ -1,0 +1,153 @@
+{
+    "id": 1,
+    "name": "bulbasaur",
+    "abilities": [
+        {
+            "name": "overgrow",
+            "description": "Wenn ein Pokémon mit dieser Fähigkeit nur noch 1/3 seiner maximalen hp oder weniger hat, werden all seine grass Attacken verstärkt, so dass sie 1,5× so viel regular damage anric
+hten wie sonst."
+        },
+        {
+            "name": "chlorophyll",
+            "description": "This Pokémon's Speed is doubled during strong sunlight.\n\nThis bonus does not count as a stat modifier."
+        }
+    ],
+    "moves": [
+        "razor-wind",
+        "swords-dance",
+        "cut",
+        "bind",
+        "vine-whip",
+        "headbutt",
+        "tackle",
+        "body-slam",
+        "take-down",
+        "double-edge",
+        "growl",
+        "strength",
+        "mega-drain",
+        "leech-seed",
+        "growth",
+        "razor-leaf",
+        "solar-beam",
+        "poison-powder",
+        "sleep-powder",
+        "petal-dance",
+        "string-shot",
+        "toxic",
+        "rage",
+        "mimic",
+        "double-team",
+        "defense-curl",
+        "light-screen",
+        "reflect",
+        "bide",
+        "sludge",
+        "skull-bash",
+        "amnesia",
+        "flash",
+        "rest",
+        "substitute",
+        "snore",
+        "curse",
+        "protect",
+        "sludge-bomb",
+        "mud-slap",
+        "outrage",
+        "giga-drain",
+        "endure",
+        "charm",
+        "false-swipe",
+        "swagger",
+        "fury-cutter",
+        "attract",
+        "sleep-talk",
+        "return",
+        "frustration",
+        "safeguard",
+        "sweet-scent",
+        "synthesis",
+        "hidden-power",
+        "sunny-day",
+        "rock-smash",
+        "facade",
+        "nature-power",
+        "helping-hand",
+        "ingrain",
+        "knock-off",
+        "secret-power",
+        "weather-ball",
+        "grass-whistle",
+        "bullet-seed",
+        "magical-leaf",
+        "natural-gift",
+        "worry-seed",
+        "seed-bomb",
+        "energy-ball",
+        "leaf-storm",
+        "power-whip",
+        "captivate",
+        "grass-knot",
+        "venoshock",
+        "acid-spray",
+        "round",
+        "echoed-voice",
+        "grass-pledge",
+        "work-up",
+        "grassy-terrain",
+        "confide",
+        "grassy-glide",
+        "tera-blast",
+        "trailblaze"
+    ],
+    "types": [
+        "grass",
+        "poison"
+    ],
+    "pixelImage": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+    "animeImage": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    "animeShinyImage": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1.png",
+    "evolutions": {
+        "originalPokemon": {
+            "id": "1",
+            "name": "bulbasaur",
+            "imageAndTypes": {
+                "frontDefault": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+                "frontShinyDefault": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1.png",
+                "types": [
+                    "grass",
+                    "poison"
+                ]
+            }
+        },
+        "firstEvolution": [
+            {
+                "id": "2",
+                "name": "ivysaur",
+                "imageAndTypes": {
+                    "frontDefault": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+                    "frontShinyDefault": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/2.png",
+                    "types": [
+                        "grass",
+                        "poison"
+                    ]
+                },
+                "url": "https://pokeapi.co/api/v2/evolution-chain/1/",
+                "secondEvolution": [
+                    {
+                        "id": "3",
+                        "name": "venusaur",
+                        "imageAndTypes": {
+                            "frontDefault": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+                            "frontShinyDefault": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/3.png",
+                            "types": [
+                                "grass",
+                                "poison"
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

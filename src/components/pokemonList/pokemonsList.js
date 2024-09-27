@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import getData from '../api/getData.js'; // Ajuste o caminho conforme necessário
+import getFullData from '../api/getFullData.js';
 import styled from 'styled-components';
 import './pokemonList.css';
 import PokemonDetails from '../pokemonDetails/pokemonDetails.js';
 
 const PokemonList = () => {
     const [pokemonIds, setPokemonIds] = useState(Array.from({ length: 10 }, (_, i) => i + 1));
-    const [pokemons, setPokemons] = useState([]);
+    const [pokemons, setPokemons] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -20,7 +20,7 @@ const PokemonList = () => {
             setError(null);
 
             try {
-                const promises = pokemonIds.map(id => getData(id));
+                const promises = pokemonIds.map(id => getFullData(id));
                 const pokemonData = await Promise.all(promises);
                 setPokemons(pokemonData);
             } catch (err) {
@@ -64,7 +64,7 @@ const PokemonList = () => {
                             {pokemons.map((pokemon, index) => (
                                 pokemon && (
                                     <div key={index} className="pokemon-item" onClick={() => setSelectedPokemon(pokemon)}>
-                                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                                        <img src={pokemon.pixelImage} alt={pokemon.name} />
                                         <NamePokemon className='pokemon-name'>
                                             {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                                         </NamePokemon>

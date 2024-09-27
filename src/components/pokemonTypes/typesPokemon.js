@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const TypesPokemon = ({ pokemon }) => {
-    const { types } = pokemon;
-
     const getTextColor = (hexColor) => {
         hexColor = hexColor.replace('#', '');
     
@@ -39,8 +37,8 @@ const TypesPokemon = ({ pokemon }) => {
 
     return (
         <ul>
-            {types.map((typeInfo, index) => {
-                const backgroundColor = colours[typeInfo.type.name];
+            {pokemon.types.map((typeInfo, index) => {
+                const backgroundColor = colours[typeInfo];
                 const textColor = getTextColor(backgroundColor)
 
                 return (
@@ -52,7 +50,7 @@ const TypesPokemon = ({ pokemon }) => {
                             color: textColor
                         }}
                     >
-                        {typeInfo.type.name.toUpperCase()}
+                        {typeInfo.toUpperCase()}
                     </EstiloTipo>
                 );
             })}

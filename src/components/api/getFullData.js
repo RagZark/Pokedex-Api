@@ -32,7 +32,7 @@ const getFullData = async function (id) {
         return null;
     }
 
-    const to_return = {
+    return {
         id: baseInfo.id,
         name: baseInfo.name,
         abilities: await getAbility(baseInfo),
@@ -43,7 +43,7 @@ const getFullData = async function (id) {
         animeShinyImage: baseInfo.sprites.other["official-artwork"].front_shiny,
         evolutions: await getEvolutions(baseInfo),
     };
-    myLog(to_return.evolutions)
+
 }
 
 const getAbility = async (baseInfo) => {
@@ -74,7 +74,7 @@ const getEvolutions = async (baseInfo) => {
 
     if (species?.evolution_chain?.url) {
         const evolutionChainFromApi = await doRequest(species.evolution_chain.url);
-        
+
         evolutionChain.originalPokemon = {
             id: evolutionChainFromApi.chain.species.url.split("/")[6],
             name: evolutionChainFromApi.chain.species.name,
