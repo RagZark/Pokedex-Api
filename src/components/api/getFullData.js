@@ -113,6 +113,4 @@ const getSmallerInfoByName = async (id) => {
     };
 };
 
-getFullData(1)
-
 export default getFullData

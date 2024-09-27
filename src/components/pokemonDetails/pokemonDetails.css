@@ -41,7 +41,7 @@
 }
 
 .pokemon-details-types ul {
-    padding-top: 32px;
+    padding-top: 8px;
     display: flex;
     justify-content: space-around;
     list-style: none;

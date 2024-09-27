@@ -35,6 +35,10 @@ const TypesPokemon = ({ pokemon }) => {
         fairy: '#D685AD',
     };
 
+    if (!pokemon?.types || pokemon.types.length === 0) {
+        return <p>Sem tipos disponíveis.</p>;
+      }
+
     return (
         <ul>
             {pokemon.types.map((typeInfo, index) => {

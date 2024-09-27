@@ -151,3 +151,61 @@ hten wie sonst."
         ]
     }
 }
+
+
+<!-- HTML !-->
+<button class="button-2" role="button">
+  <span class="text">Button 2</span>
+</button>
+
+/* CSS */
+.movies-list .movies-name {
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.movies-list .movies-name:focus {
+  outline-style: solid;
+  outline-color: transparent;
+}
+
+.movies-list .movies-name {
+  touch-action: manipulation;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.movies-list .movies-name {
+  touch-action: manipulation;
+  border: 1px solid #0360df;
+  border-radius: 50px;
+  padding: 12px 16px;
+  background-color: #0360df;
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff 12%, transparent), radial-gradient(75% 50% at 50% 85%, #8de3fc, transparent);
+  box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-shadow: 0 1px 1px #116ee7;
+  transition-property: border-color, transform, background-color;
+  transition-duration: 0.2s;
+}
+
+.movies-list .movies-name:hover {
+  transform: scale(1.04);
+}
+
+.movies-list .movies-name:active {
+  border-color: #0048d5;
+  transform: scale(0.96);
+  background-color: #0048d5;
+}

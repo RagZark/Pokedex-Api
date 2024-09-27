@@ -78,7 +78,7 @@ const PokemonList = () => {
                 <div className='pokemon-information'>
                     <PokemonDetails pokemon={selectedPokemon} />
                     <button
-                        onClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`)}
+                        onClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
                         className="load-more"
                         disabled={!selectedPokemon}
                     >
