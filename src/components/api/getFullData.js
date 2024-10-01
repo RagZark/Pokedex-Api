@@ -43,7 +43,6 @@ const getFullData = async function (id) {
         animeShinyImage: baseInfo.sprites.other["official-artwork"].front_shiny,
         evolutions: await getEvolutions(baseInfo),
     };
-
 }
 
 const getAbility = async (baseInfo) => {
@@ -54,7 +53,7 @@ const getAbility = async (baseInfo) => {
                     (response) => {
                         return {
                             name: ability.ability.name,
-                            description: response.effect_entries[1].effect,
+                            description: response?.effect_entries[1]?.effect || "Habilidade sem definição.",
                         };
                     },
                 ),
@@ -87,7 +86,6 @@ const getEvolutions = async (baseInfo) => {
                     id: content.species.url.split("/")[6],
                     name: content.species.name,
                     imageAndTypes: await getSmallerInfoByName(content.species.url.split("/")[6]),
-                    url: species.evolution_chain.url,
                     secondEvolution: await Promise.all(content.evolves_to?.map(async (content) => ({
                         id: content.species.url.split("/")[6],
                         name: content.species.name,
@@ -112,5 +110,7 @@ const getSmallerInfoByName = async (id) => {
         types: pokemon.types.map((type) => type.type.name),
     };
 };
+
+getFullData(128)
 
 export default getFullData

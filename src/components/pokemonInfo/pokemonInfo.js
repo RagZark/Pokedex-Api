@@ -1,9 +1,10 @@
 import React from 'react';
 import PokemonAbilities from '../pokemonAbilities/pokemonAbilities.js';
 import './pokemonInfo.css'
-import TypesPokemon from '../typesPokemon/typesPokemon.js';
 import usePokemonFullData from '../usemodels/usePokemonFullData.js';
 import PokemonDetails from '../pokemonDetails/pokemonDetails.js';
+import PokemonEvolutions from '../pokemonEvolutions/pokemonEvolutions.js';
+import PokemonMoves from '../pokemonMoves/pokemonMoves.js';
 
 const PokemonInfo = ({ id }) => {
   const { pokemonData: pokemon, loading, error } = usePokemonFullData(id);
@@ -22,21 +23,20 @@ const PokemonInfo = ({ id }) => {
 
   return (
     <div className='pokemon-info'>
-      <div className='pokemon-base-info'>
-        <PokemonDetails pokemon={pokemon}/>
-      </div>
-      <div className='moves'>
-        <h3>Moves:</h3>
-        <ul className='moves-list'>
-          {pokemon.moves?.map((moveInfo) => (
-            <li className='moves-name' key={moveInfo}>{moveInfo}</li>
-          ))}
-        </ul>
-      </div>
-      <div className='abilities-container'>
-        <ul>
+      <PokemonDetails pokemon={pokemon} />
+      <div className='pokemon-more-information'>
+        <div className='moves'>
+          <h2>Moves</h2>
+          <PokemonMoves pokemon={pokemon} />
+        </div>
+        <div className='abilities-container'>
+          <h2>Habilidades</h2>
           <PokemonAbilities pokemon={pokemon} />
-        </ul>
+        </div>
+        <div className='pokemon-container-evolutions'>
+          <h2>Evolutions</h2>
+          <PokemonEvolutions pokemon={pokemon} />
+        </div>
       </div>
     </div>
   );

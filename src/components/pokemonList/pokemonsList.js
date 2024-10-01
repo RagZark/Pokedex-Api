@@ -48,7 +48,7 @@ const PokemonList = () => {
     };
 
     if (loading && !pokemons.length) {
-        return <p>Carregando Pokémons...</p>;
+        return <p className='await-pokemons-list'>Carregando Pokémons...</p>;
     }
 
     if (error) {
@@ -61,9 +61,9 @@ const PokemonList = () => {
                 <div className='pokemon-main'>
                     <div className="pokemon-container lined-background">
                         <div className="pokemon-list" ref={containerRef}>
-                            {pokemons.map((pokemon, index) => (
+                            {pokemons.map((pokemon) => (
                                 pokemon && (
-                                    <div key={index} className="pokemon-item" onClick={() => setSelectedPokemon(pokemon)}>
+                                    <div key={pokemon.id} className="pokemon-item" onClick={() => setSelectedPokemon(pokemon)}>
                                         <img src={pokemon.pixelImage} alt={pokemon.name} />
                                         <NamePokemon className='pokemon-name'>
                                             {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
@@ -76,7 +76,7 @@ const PokemonList = () => {
                     <button onClick={loadMorePokemons} className="load-more">Carregar Mais</button>
                 </div>
                 <div className='pokemon-information'>
-                    <PokemonDetails pokemon={selectedPokemon} />
+                    <PokemonDetails pokemon={selectedPokemon}/>
                     <button
                         onClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
                         className="load-more"

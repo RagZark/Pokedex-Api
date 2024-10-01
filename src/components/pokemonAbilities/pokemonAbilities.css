@@ -1,0 +1,9 @@
+.ability-container{
+    height: 40vh;
+}
+.ability-list {
+    list-style: none;
+    padding-left: 8px;
+    display: grid;
+    grid-template-rows: repeat(auto);
+}

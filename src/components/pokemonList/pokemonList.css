@@ -1,5 +1,10 @@
 @import url('https://fonts.cdnfonts.com/css/pokemon-fire-red');
 
+.await-pokemons-list{
+  text-align: center;
+  font-size: 20px;
+}
+
 .pokemon-list-details{
   font-family: 'Pokemon Fire Red', sans-serif;
   display: flex;

@@ -16,7 +16,6 @@ const PokemonDetails = ({ pokemon }) => {
                     <img src={pokemon.animeImage} alt={pokemon.name} />
                     <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
                 </div>
-
                 <div className='pokemon-details-types'>
                     <TypesPokemon pokemon={pokemon} />
                 </div>

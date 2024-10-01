@@ -4,11 +4,11 @@ import styled from "styled-components";
 const TypesPokemon = ({ pokemon }) => {
     const getTextColor = (hexColor) => {
         hexColor = hexColor.replace('#', '');
-    
+
         const r = parseInt(hexColor.substring(0, 2), 16);
         const g = parseInt(hexColor.substring(2, 4), 16);
         const b = parseInt(hexColor.substring(4, 6), 16);
-    
+
 
         const luminosity = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
         return luminosity > 0.5 ? 'black' : 'white';
@@ -37,7 +37,7 @@ const TypesPokemon = ({ pokemon }) => {
 
     if (!pokemon?.types || pokemon.types.length === 0) {
         return <p>Sem tipos disponíveis.</p>;
-      }
+    }
 
     return (
         <ul>
@@ -46,11 +46,11 @@ const TypesPokemon = ({ pokemon }) => {
                 const textColor = getTextColor(backgroundColor)
 
                 return (
-                    <EstiloTipo 
-                        key={index} 
+                    <EstiloTipo
+                        key={index}
                         className="type"
-                        style={{ 
-                            backgroundColor: backgroundColor, 
+                        style={{
+                            backgroundColor: backgroundColor,
                             color: textColor
                         }}
                     >
@@ -62,9 +62,9 @@ const TypesPokemon = ({ pokemon }) => {
     );
 };
 
-const EstiloTipo = styled.li `
-    height: 40px;
-    width: 120px;
+const EstiloTipo = styled.li`
+    width: ${props => props.largura || "120px"};
+    height: ${props => props.altura || "40px"};
     display: flex;
     justify-content: center;
     align-items: center;

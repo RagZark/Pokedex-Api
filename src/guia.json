@@ -132,7 +132,6 @@ hten wie sonst."
                         "poison"
                     ]
                 },
-                "url": "https://pokeapi.co/api/v2/evolution-chain/1/",
                 "secondEvolution": [
                     {
                         "id": "3",
@@ -152,60 +151,28 @@ hten wie sonst."
     }
 }
 
+https://www.google.com/search?q=crt+effect+css&rlz=1C1GCEA_enBR1112BR1112&oq=crt+effect+css&gs_lcrp=EgZjaHJvbWUyCwgAEEUYExg5GIAEMgoIARAAGAgYExgeMgoIAhAAGAgYExgeMgoIAxAAGIAEGKIE0gEINzcyNmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
 
-<!-- HTML !-->
-<button class="button-2" role="button">
-  <span class="text">Button 2</span>
-</button>
+https://freefrontend.com/css-text-glitch-effects/
 
-/* CSS */
-.movies-list .movies-name {
-  touch-action: manipulation;
-  -webkit-appearance: none;
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit;
-  -webkit-tap-highlight-color: transparent;
-}
+https://codepen.io/tswone/pen/GLzZLd
 
-.movies-list .movies-name:focus {
-  outline-style: solid;
-  outline-color: transparent;
-}
 
-.movies-list .movies-name {
-  touch-action: manipulation;
-  margin: 3px;
-  cursor: pointer;
-}
-
-.movies-list .movies-name {
-  touch-action: manipulation;
-  border: 1px solid #0360df;
-  border-radius: 50px;
-  padding: 12px 16px;
-  background-color: #0360df;
-  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff 12%, transparent), radial-gradient(75% 50% at 50% 85%, #8de3fc, transparent);
-  box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  color: #fff;
-  text-shadow: 0 1px 1px #116ee7;
-  transition-property: border-color, transform, background-color;
-  transition-duration: 0.2s;
-}
-
-.movies-list .movies-name:hover {
-  transform: scale(1.04);
-}
-
-.movies-list .movies-name:active {
-  border-color: #0048d5;
-  transform: scale(0.96);
-  background-color: #0048d5;
+{
+    "id": 128,
+    "name": "tauros",
+    "evolutions": {
+        "originalPokemon": {
+            "id": "128",
+            "name": "tauros",
+            "imageAndTypes": {
+                "frontDefault": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/128.png",
+                "frontShinyDefault": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/128.png",
+                "types": [
+                    "normal"
+                ]
+            }
+        },
+        "firstEvolution": []
+    }
 }

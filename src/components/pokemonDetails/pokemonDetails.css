@@ -35,7 +35,7 @@
     border: 2px solid black;
     border-radius: 8px;
     background-image:
-        linear-gradient(to bottom, black 1px, transparent 1px);
+    linear-gradient(to bottom, black 1px, transparent 1px);
     background-size: 100vh 20px;
     background-color: #495466;
 }

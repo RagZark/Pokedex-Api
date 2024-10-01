@@ -9,15 +9,7 @@ import './pokemonPage.css'
 const PokemonPage = () => {
     const { id } = useParams();
     const [pokemonId, setPokemonId] = useState(Number(id));
-    const { backgroundColor } = useBackground()
-
-    // const handleNext = () => {
-    //     setPokemonId(prevId => (prevId <= 1025 ? prevId + 1 : 1));
-    // };
-
-    // const handlePrev = () => {
-    //     setPokemonId(prevId => (prevId > 1 ? prevId - 1 : 1025));
-    // };
+    const { backgroundColor } = useBackground();
 
     useEffect(() => {
         setPokemonId(Number(id));
@@ -27,7 +19,7 @@ const PokemonPage = () => {
         <>
             <ContainerPokemonPage style={{ backgroundColor: backgroundColor }}>
                 <div>
-                    <PokemonInfo id={pokemonId} />
+                    <PokemonInfo id={pokemonId}/>
                 </div>
             </ContainerPokemonPage>
         </>

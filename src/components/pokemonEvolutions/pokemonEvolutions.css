@@ -1,0 +1,29 @@
+.pokemon-evolutions{
+    display: flex;
+    width: 100%;
+}
+.pokemon-evolutions-list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.pokemon-evo-design{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    cursor: pointer;
+}
+
+.pokemon-evo-design ul{
+    display: flex;
+}
+
+.pokemon-evo-design ul li{
+    height: 30px;
+    width: 90px;
+    font-size: 16px;
+}
