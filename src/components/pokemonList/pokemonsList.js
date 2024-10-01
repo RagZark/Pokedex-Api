@@ -4,6 +4,7 @@ import getFullData from '../api/getFullData.js';
 import styled from 'styled-components';
 import './pokemonList.css';
 import PokemonDetails from '../pokemonDetails/pokemonDetails.js';
+import Botao from '../button/button.js';
 
 const PokemonList = () => {
     const [pokemonIds, setPokemonIds] = useState(Array.from({ length: 10 }, (_, i) => i + 1));
@@ -77,13 +78,12 @@ const PokemonList = () => {
                 </div>
                 <div className='pokemon-information'>
                     <PokemonDetails pokemon={selectedPokemon}/>
-                    <button
+                    <Botao
                         onClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
-                        className="load-more"
+                        className="button-style load-more"
                         disabled={!selectedPokemon}
-                    >
-                        Mais Informações
-                    </button>
+                        value={"Mais Informações"}
+                    />
                 </div>
             </div>
         </>
