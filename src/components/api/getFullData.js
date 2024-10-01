@@ -32,7 +32,7 @@ const getFullData = async function (id) {
         return null;
     }
 
-    return {
+    return  {
         id: baseInfo.id,
         name: baseInfo.name,
         abilities: await getAbility(baseInfo),
@@ -111,6 +111,5 @@ const getSmallerInfoByName = async (id) => {
     };
 };
 
-getFullData(128)
 
 export default getFullData

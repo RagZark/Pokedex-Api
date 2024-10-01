@@ -1,3 +1,10 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-fire-red');
+
+*{
+  font-family: 'Pokemon Fire Red', sans-serif;
+}
+
+
 body::-webkit-scrollbar {
     display: none;
   }

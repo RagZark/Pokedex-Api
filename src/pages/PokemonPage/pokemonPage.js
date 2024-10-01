@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import PokemonInfo from '../../components/pokemonInfo/pokemonInfo.js';
 import { useBackground } from '../../components/backgroundContext/backgroundContext.js'
 import styled from 'styled-components';
-import './pokemonPage.css'
-
 
 const PokemonPage = () => {
     const { id } = useParams();

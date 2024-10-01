@@ -25,16 +25,16 @@ const PokemonInfo = ({ id }) => {
     <div className='pokemon-info'>
       <PokemonDetails pokemon={pokemon} />
       <div className='pokemon-more-information'>
-        <div className='moves'>
+        <div className='moves-container lined-background-pokeInfo'>
           <h2>Moves</h2>
           <PokemonMoves pokemon={pokemon} />
         </div>
-        <div className='abilities-container'>
+        <div className='abilities-container lined-background-pokeInfo'>
           <h2>Habilidades</h2>
           <PokemonAbilities pokemon={pokemon} />
         </div>
-        <div className='pokemon-container-evolutions'>
-          <h2>Evolutions</h2>
+        <div className='pokemon-container-evolutions lined-background-pokeInfo'>
+          <h2>Evoluções</h2>
           <PokemonEvolutions pokemon={pokemon} />
         </div>
       </div>
