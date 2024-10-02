@@ -57,7 +57,6 @@ const PokemonList = () => {
     }
 
     return (
-        <>
             <div className='pokemon-list-details'>
                 <div className='pokemon-main'>
                     <div className="pokemon-container lined-background">
@@ -74,19 +73,19 @@ const PokemonList = () => {
                             ))}
                         </div>
                     </div>
-                    <button onClick={loadMorePokemons} className="load-more">Carregar Mais</button>
+                    <Botao color={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"}  befBoxShC={"rgb(36, 79, 36)"} hvBkgC={"#85db85"} functionClick={loadMorePokemons} hoverBfBxShC={"#193619"} value="Carregar Mais" className="load-more" />
                 </div>
                 <div className='pokemon-information'>
                     <PokemonDetails pokemon={selectedPokemon}/>
-                    <Botao
+                    <button
                         onClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
-                        className="button-style load-more"
+                        className="load-more"
                         disabled={!selectedPokemon}
-                        value={"Mais Informações"}
-                    />
+                    >
+                        Mais Informações
+                    </button>
                 </div>
             </div>
-        </>
     );
 };
 

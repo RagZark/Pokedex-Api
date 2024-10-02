@@ -2,30 +2,37 @@ import React from "react"
 import styled from "styled-components"
 import imgBkgNavBarRuby from '../../img/pokedex-header-ruby.png'
 import imgBkgNavBarSapphire from '../../img/pokedex-header-sapphire.png'
-import { useBackground } from "../backgroundContext/backgroundContext.js"
+import {useBackground } from "../backgroundContext/backgroundContext.js"
+import { useNavigate } from "react-router-dom";
 import Botao from "../button/button.js"
 
-const Navbar = () => {
 
+const Navbar = () => {
     const { backgroundImage } = useBackground();
+    const navigate = useNavigate();
+
+    const homeClick = () => {
+        navigate(`/`);
+     };
 
     const backgroundImageUrl = backgroundImage === 'ruby' ? imgBkgNavBarRuby : imgBkgNavBarSapphire;
 
-    return (<>
+
+    return (
         <Cabecalho style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
             <Lista>
                 <ItemLista>
-                <Botao value={"Retorno"}></Botao>
+                    <Botao value={"Home Page"} functionClick={homeClick}></Botao>
                 </ItemLista>
                 <ItemLista>
-                <Botao value={"Retorno"}></Botao>
+                    <Botao value={"Retorno"}></Botao>
                 </ItemLista>
                 <ItemLista>
-                <Botao value={"Retorno"}></Botao>
+                    <Botao value={"Retorno"}></Botao>
                 </ItemLista>
             </Lista>
         </Cabecalho>
-    </>)
+    )
 }
 
 const Cabecalho = styled.header`

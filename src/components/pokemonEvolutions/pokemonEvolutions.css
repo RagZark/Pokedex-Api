@@ -31,7 +31,7 @@
 .pokemon-second-evos {
     display: flex;
     flex-direction: column; 
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 10px; 
 }
 
@@ -49,6 +49,12 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin: 0 5px;
     cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.pokemon-evo-design:hover{
+    background-color: #FFFFFF;
+    color: black;
 }
 
 .pokemon-first-evos .no-evolution{
@@ -65,7 +71,7 @@
 
 .pokemon-evo-design p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
 }
 
@@ -74,8 +80,9 @@
 }
 
 .pokemon-evo-design ul li {
-    height: 30px;
-    width: 90px;
+    z-index: 1;
+    height: 28px;
+    width: 100px;
     font-size: 16px;
     text-align: center;
 }

@@ -17,6 +17,10 @@
     width: 880px;
 }
 
+.pokemon-main>:nth-child(2){
+  align-self: center;
+}
+
 .pokemon-container {
     overflow-y: auto;
     height: 500px; 
@@ -87,18 +91,17 @@
     width: 180px;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #90EE90;
+    background-color: #85db85;
     font-size: 18px;
     font-weight: 600;
     color: #000000;
-    border: 2px solid black;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.3s ease-in;
     border-radius: 8px;
-    box-shadow: inset -4px -4px 2px 0px rgba(36, 79, 36, 1);
+    box-shadow: inset -4px -4px 2px 0px #193619;
   }
   
   .load-more:hover{
