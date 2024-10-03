@@ -5,12 +5,12 @@ import imgBkgFooterRuby from '../../img/background-footer-ruby.png';
 import imgBkgFooterSapphire from '../../img/background-footer-sapphire.png';
 
 const Rodape = () => {
-    const { backgroundImage } = useBackground();
+    const { backgroundImage, backgroundColor } = useBackground();
 
     const backgroundImageUrl = backgroundImage === 'ruby' ? imgBkgFooterRuby : imgBkgFooterSapphire;
 
     return (
-        <RodapeUse style={{ backgroundImage: `url(${backgroundImageUrl})` }} />
+        <RodapeUse style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundColor: backgroundColor }} />
     );
 }
 

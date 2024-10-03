@@ -87,9 +87,4 @@ const PokemonList = () => {
     );
 };
 
-
-const NamePokemon = styled.h3`
-
-`
-
 export default PokemonList;
