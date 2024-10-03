@@ -57,45 +57,39 @@ const PokemonList = () => {
     }
 
     return (
-            <div className='pokemon-list-details'>
-                <div className='pokemon-main'>
-                    <div className="pokemon-container lined-background">
-                        <div className="pokemon-list" ref={containerRef}>
-                            {pokemons.map((pokemon) => (
-                                pokemon && (
-                                    <div key={pokemon.id} className="pokemon-item" onClick={() => setSelectedPokemon(pokemon)}>
-                                        <img src={pokemon.pixelImage} alt={pokemon.name} />
-                                        <NamePokemon className='pokemon-name'>
-                                            {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-                                        </NamePokemon>
-                                    </div>
-                                )
-                            ))}
-                        </div>
+        <div className='pokemon-list-details'>
+            <div className='pokemon-main'>
+                <div className="pokemon-container lined-background">
+                    <div className="pokemon-list" ref={containerRef}>
+                        {pokemons.map((pokemon) => (
+                            pokemon && (
+                                <div key={pokemon.id} className="pokemon-item" onClick={() => setSelectedPokemon(pokemon)}>
+                                    <img src={pokemon.pixelImage} alt={pokemon.name} />
+                                    <h3 className='pokemon-name'>
+                                        {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                                    </h3>
+                                </div>
+                            )
+                        ))}
                     </div>
-                    <Botao color={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"}  befBoxShC={"rgb(36, 79, 36)"} hvBkgC={"#85db85"} functionClick={loadMorePokemons} hoverBfBxShC={"#193619"} value="Carregar Mais" className="load-more" />
                 </div>
-                <div className='pokemon-information'>
-                    <PokemonDetails pokemon={selectedPokemon}/>
-                    <button
-                        onClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
-                        className="load-more"
-                        disabled={!selectedPokemon}
-                    >
-                        Mais Informações
-                    </button>
-                </div>
+                <Botao color={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hvBkgC={"#85db85"} functionClick={loadMorePokemons} hoverBfBxShC={"#193619"} value="Carregar Mais"/>
             </div>
+            <div className='pokemon-information'>
+                <PokemonDetails pokemon={selectedPokemon} />
+                <Botao
+                    color={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hvBkgC={"#85db85"} hoverBfBxShC={"#193619"}
+                    functionClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
+                    disabled={!selectedPokemon} value="Saiba Mais"
+                />
+            </div>
+        </div>
     );
 };
 
 
 const NamePokemon = styled.h3`
-    font-size: 20px;
-    color: #FFFFFF;
-    -webkit-text-stroke: .8px;
-    -webkit-text-stroke-color: #000000;
-    letter-spacing: 0.3px;
+
 `
 
 export default PokemonList;

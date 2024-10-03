@@ -9,7 +9,6 @@ const PokemonDetails = ({ pokemon }) => {
     const formattedId = `#${pokemon.id.toString().padStart(4, '0')}`;
 
     return (
-        <>
             <div className="pokemon-details">
                 <div className='pokemon-details-specify'>
                     <h3>ID: {formattedId}</h3>
@@ -20,7 +19,6 @@ const PokemonDetails = ({ pokemon }) => {
                     <TypesPokemon pokemon={pokemon} />
                 </div>
             </div>
-        </>
     );
 };
 

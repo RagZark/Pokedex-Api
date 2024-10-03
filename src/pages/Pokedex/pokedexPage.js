@@ -8,11 +8,9 @@ const Pokedex = () => {
     const { backgroundColor } = useBackground(); // Obtenha a cor de fundo do contexto
 
     return (
-        <>
             <ContainerPokedex backgroundColor={backgroundColor}>
                 <PokemonList />
             </ContainerPokedex>
-        </>
     );
 };
 

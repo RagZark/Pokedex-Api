@@ -14,13 +14,11 @@ const PokemonPage = () => {
     }, [id]);
 
     return (
-        <>
             <ContainerPokemonPage style={{ backgroundColor: backgroundColor }}>
                 <div>
                     <PokemonInfo id={pokemonId}/>
                 </div>
             </ContainerPokemonPage>
-        </>
     );
 };
 
