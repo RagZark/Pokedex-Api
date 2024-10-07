@@ -5,15 +5,20 @@ import styled from 'styled-components';
 import './pokemonList.css';
 import PokemonDetails from '../pokemonDetails/pokemonDetails.js';
 import Botao from '../button/button.js';
+import { useBackground } from '../../components/backgroundContext/backgroundContext.js';
 
 const PokemonList = () => {
     const [pokemonIds, setPokemonIds] = useState(Array.from({ length: 10 }, (_, i) => i + 1));
-    const [pokemons, setPokemons] = useState({});
+    const [pokemons, setPokemons] = useState([]);
+    const [filteredPokemons, setFilteredPokemons] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const [searchType, setSearchType] = useState('');
+    const [searchInput, setSearchInput] = useState('');
     const containerRef = useRef(null);
     const navigate = useNavigate();
+    const { backgroundColor } = useBackground();
 
     useEffect(() => {
         const fetchPokemons = async () => {
@@ -48,6 +53,33 @@ const PokemonList = () => {
         }, 0);
     };
 
+    const handleSearch = async () => {
+        setLoading(true);
+
+        if (searchType === 'id' || searchType === 'name') {
+            try {
+                const pokemon = await getFullData(searchInput.toLowerCase());
+                setFilteredPokemons(pokemon ? [pokemon] : []);
+            } catch (err) {
+                setError("Pokémon não encontrado.");
+            }
+        }
+
+        setLoading(false);
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    };
+
+    const handleResetSearch = () => {
+        setFilteredPokemons(null);
+        setSearchInput('');
+        setSearchType('');
+    };
+
     if (loading && !pokemons.length) {
         return <p className='await-pokemons-list'>Carregando Pokémons...</p>;
     }
@@ -56,12 +88,32 @@ const PokemonList = () => {
         return <p>Erro: {error}</p>;
     }
 
+    const displayedPokemons = filteredPokemons || pokemons;
+
     return (
-        <div className='pokemon-list-details'>
+        <ContainerPokedex className='pokemon-list-details' backgroundColor={backgroundColor}>
             <div className='pokemon-main'>
                 <div className="pokemon-container lined-background">
+                    <div className='search-container'>
+                        <div className='search-items'>
+                        <input
+                            type='text'
+                            placeholder='Pesquise por ID ou Nome'
+                            value={searchInput}
+                            onChange={(e) => setSearchInput(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <select onChange={(e) => setSearchType(e.target.value)} value={searchType}>
+                            <option value=''>Selecione o tipo de pesquisa</option>
+                            <option value='id'>ID</option>
+                            <option value='name'>Nome</option>
+                        </select>
+                        </div>
+                        <button onClick={handleSearch}>Buscar</button>
+                        <button onClick={handleResetSearch}>Resetar</button> {/* Botão para resetar a pesquisa */}
+                    </div>
                     <div className="pokemon-list" ref={containerRef}>
-                        {pokemons.map((pokemon) => (
+                        {displayedPokemons.map((pokemon) => (
                             pokemon && (
                                 <div key={pokemon.id} className="pokemon-item" onClick={() => setSelectedPokemon(pokemon)}>
                                     <img src={pokemon.pixelImage} alt={pokemon.name} />
@@ -73,18 +125,22 @@ const PokemonList = () => {
                         ))}
                     </div>
                 </div>
-                <Botao color={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hvBkgC={"#85db85"} functionClick={loadMorePokemons} hoverBfBxShC={"#193619"} value="Carregar Mais"/>
+                <Botao bkgC={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hoverBkgC={"#85db85"} hoverBfBxShC={"#193619"} functionClick={loadMorePokemons} value="Carregar Mais" />
             </div>
             <div className='pokemon-information'>
                 <PokemonDetails pokemon={selectedPokemon} />
                 <Botao
-                    color={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hvBkgC={"#85db85"} hoverBfBxShC={"#193619"}
+                    bkgC={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hoverBkgC={"#85db85"} hoverBfBxShC={"#193619"}
                     functionClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
                     disabled={!selectedPokemon} value="Saiba Mais"
                 />
             </div>
-        </div>
+        </ContainerPokedex>
     );
 };
+
+const ContainerPokedex = styled.div`
+    background-color: ${props => props.backgroundColor};
+`;
 
 export default PokemonList;

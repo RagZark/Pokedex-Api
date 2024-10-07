@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Botao = (props) => {
     return(
-        <BotaoStyled className="button-style" bgkColor={props.color} borderColor={props.borderC} beforeBkgColor={props.befBkgC} beforeBoxShColor={props.befBoxShC} hoverBkgColor={props.hvBkgC} hoverBeforeBoxShColor={props.hoverBfBxShC} onClick={props.functionClick}>{props.value}</BotaoStyled>
+        <BotaoStyled className="button-style" bgkColor={props.bkgC} borderColor={props.borderC} beforeBkgColor={props.befBkgC} beforeBoxShColor={props.befBoxShC} hoverBkgColor={props.hoverBkgC} hoverBeforeBoxShColor={props.hoverBfBxShC} onClick={props.functionClick}>{props.value}</BotaoStyled>
     )
 }
 

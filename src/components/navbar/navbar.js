@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Botao from "../button/button.js";
 
 const Navbar = () => {
-    const { backgroundImage, setBackgroundImage, backgroundColor } = useBackground();
+    const { backgroundImage, setBackgroundImage, setBackgroundColor, backgroundColor } = useBackground();
     const navigate = useNavigate();
 
     const homeClick = () => {
@@ -15,19 +15,28 @@ const Navbar = () => {
     };
 
     const changePokedex = () => {
-        setBackgroundImage((prev) => (prev === 'ruby' ? 'sapphire' : 'ruby')); // Atualiza o contexto
+        if (backgroundImage === 'ruby') {
+            setBackgroundImage('sapphire');
+            setBackgroundColor('#0A77DC'); 
+        } else {
+            setBackgroundImage('ruby');
+            setBackgroundColor('#DC0A2D');
+        }
     };
 
     let backgroundImageUrl = backgroundImage === 'ruby' ? imgBkgNavBarRuby : imgBkgNavBarSapphire;
+    
+    const botaoProps = backgroundImage === 'ruby' ? {bkgC:"#0A77DC", borderC: "#130341", befBkgC: "#05437d", befBoxShC: "#130341", hoverBkgC:  "#0a84f5", hoverBfBxShC: "#032b4f"} 
+    : {bkgC: "#DC0A2D", borderC: "#5C0311", befBkgC: "#b30925", befBoxShC: "#5C0311", hoverBkgC: "#f00c32", hoverBfBxShC: "#660314"}
 
     return (
         <Cabecalho style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundColor: backgroundColor }}>
             <Lista>
                 <ItemLista>
-                    <Botao value="Change Pokedex" functionClick={changePokedex}></Botao>
+                    <Botao {...botaoProps} value={"Change Pokedex"} functionClick={changePokedex}></Botao>
                 </ItemLista>
                 <ItemLista>
-                    <Botao value={"Home Page"} functionClick={homeClick}></Botao>
+                    <Botao bkgC={"#e8e800"} borderC={"#3d3d01"} befBkgC={"#828203"} befBoxShC={"#3d3d01"} hoverBkgC={"#ffff00"} hoverBfBxShC={"#545400"} value={"Home Page"} functionClick={homeClick}></Botao>
                 </ItemLista>
                 <ItemLista>
                     <Botao value={"Retorno"}></Botao>
@@ -38,7 +47,7 @@ const Navbar = () => {
 };
 
 const Cabecalho = styled.header`
-    margin-top:-5px;
+    margin-top: -5px;
     height: 150px;
     background-color: #EF0D0E;
     background-repeat: no-repeat;
