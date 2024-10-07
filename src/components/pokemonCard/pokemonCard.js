@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import './pokemonCard.css';
 import TypesPokemon from '../typesPokemon/typesPokemon.js';
+import hourGlass from '../../img/hourglass.gif'
 
 const PokemonCard = ({ pokemon }) => {
-    const [isShiny, setIsShiny] = useState(false); // Estado para gerenciar o checkbox
+    const [isShiny, setIsShiny] = useState(false);
 
     if (!pokemon) {
-        return <div className="pokemon-details no-pokemon"><h1>Aguardando a seleção de um pokemon...</h1></div>;
+        return <div className="pokemon-details no-pokemon">
+            <h1>Aguardando a seleção de um pokemon</h1>
+            <img style={{ height: '50px', width: '50px' }} src={hourGlass} alt='ampulheta'></img>
+        </div>;
     }
 
     const formattedId = `#${pokemon.id.toString().padStart(4, '0')}`;

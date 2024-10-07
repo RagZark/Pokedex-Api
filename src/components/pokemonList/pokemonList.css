@@ -9,6 +9,7 @@
   font-family: 'Pokemon Fire Red', sans-serif;
   display: flex;
   justify-content: space-around;
+  height: 800px;
 }
 
 .pokemon-main {
@@ -97,7 +98,7 @@
 .lined-background {
   background-image:
     linear-gradient(to bottom, black 1px, transparent 1px);
-  background-size: 100vh 5px;
+  background-size: 100vh 6px;
 }
 
 .pokemon-list {

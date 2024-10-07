@@ -70,14 +70,17 @@ const PokemonList = () => {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            handleSearch();
+            if (searchInput.trim() === '') {
+                handleResetSearch();
+            } else {
+                handleSearch();
+            }
         }
     };
 
     const handleResetSearch = () => {
         setFilteredPokemons(null);
         setSearchInput('');
-        setSearchType('');
     };
 
     if (loading && !pokemons.length) {
