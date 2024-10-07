@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import getFullData from '../api/getFullData.js';
 import styled from 'styled-components';
 import './pokemonList.css';
-import PokemonDetails from '../pokemonDetails/pokemonDetails.js';
+import PokemonCard from '../pokemonCard/pokemonCard.js';
 import Botao from '../button/button.js';
 import { useBackground } from '../../components/backgroundContext/backgroundContext.js';
 
@@ -110,7 +110,7 @@ const PokemonList = () => {
                         </select>
                         </div>
                         <button onClick={handleSearch}>Buscar</button>
-                        <button onClick={handleResetSearch}>Resetar</button> {/* Botão para resetar a pesquisa */}
+                        <button onClick={handleResetSearch}>Resetar</button>
                     </div>
                     <div className="pokemon-list" ref={containerRef}>
                         {displayedPokemons.map((pokemon) => (
@@ -128,7 +128,7 @@ const PokemonList = () => {
                 <Botao bkgC={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hoverBkgC={"#85db85"} hoverBfBxShC={"#193619"} functionClick={loadMorePokemons} value="Carregar Mais" />
             </div>
             <div className='pokemon-information'>
-                <PokemonDetails pokemon={selectedPokemon} />
+                <PokemonCard pokemon={selectedPokemon} />
                 <Botao
                     bkgC={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hoverBkgC={"#85db85"} hoverBfBxShC={"#193619"}
                     functionClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}

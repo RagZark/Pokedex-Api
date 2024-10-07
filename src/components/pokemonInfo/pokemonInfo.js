@@ -2,7 +2,7 @@ import React from 'react';
 import PokemonAbilities from '../pokemonAbilities/pokemonAbilities.js';
 import './pokemonInfo.css'
 import usePokemonFullData from '../usemodels/usePokemonFullData.js';
-import PokemonDetails from '../pokemonDetails/pokemonDetails.js';
+import PokemonCard from '../pokemonCard/pokemonCard.js';
 import PokemonEvolutions from '../pokemonEvolutions/pokemonEvolutions.js';
 import PokemonMoves from '../pokemonMoves/pokemonMoves.js';
 
@@ -23,7 +23,7 @@ const PokemonInfo = ({ id }) => {
 
   return (
     <div className='pokemon-info'>
-      <PokemonDetails pokemon={pokemon} />
+      <PokemonCard pokemon={pokemon} />
       <div className='pokemon-more-information'>
         <div className='moves-container lined-background-pokeInfo'>
           <h2>Moves</h2>

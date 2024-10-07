@@ -14,6 +14,10 @@ const Navbar = () => {
         navigate(`/`);
     };
 
+    const pokedexClick = () => {
+        navigate(`/pokedex`)
+    }
+
     const changePokedex = () => {
         if (backgroundImage === 'ruby') {
             setBackgroundImage('sapphire');
@@ -36,10 +40,10 @@ const Navbar = () => {
                     <Botao {...botaoProps} value={"Change Pokedex"} functionClick={changePokedex}></Botao>
                 </ItemLista>
                 <ItemLista>
-                    <Botao bkgC={"#e8e800"} borderC={"#3d3d01"} befBkgC={"#828203"} befBoxShC={"#3d3d01"} hoverBkgC={"#ffff00"} hoverBfBxShC={"#545400"} value={"Home Page"} functionClick={homeClick}></Botao>
+                    <Botao bkgC={"#d1a000"} borderC={"#403100"} befBkgC={"#856600"} befBoxShC={"#403100"} hoverBkgC={"#ffc300"} hoverBfBxShC={"#5c4600"} value={"Chose Pokedex"} functionClick={homeClick}></Botao>
                 </ItemLista>
                 <ItemLista>
-                    <Botao value={"Retorno"}></Botao>
+                    <Botao bkgC={"#479154"} borderC={"#162e1a"} befBkgC={"#2b5c33"} befBoxShC={"#162e1a"} hoverBkgC={"#61ba71"} hoverBfBxShC={"#214527"} value={"Pokedex Page"} functionClick={pokedexClick}></Botao>
                 </ItemLista>
             </Lista>
         </Cabecalho>
