@@ -86,19 +86,15 @@ const PokemonList = () => {
     const handleInputChange = (e) => {
         const value = e.target.value;
 
-        // Verifique o tipo de pesquisa e valide a entrada
         if (searchType === 'id') {
-            // Permitir apenas números
-            if (/^\d*$/.test(value)) { // Regex que permite apenas dígitos
+            if (/^\d*$/.test(value)) {
                 setSearchInput(value);
             }
         } else if (searchType === 'name') {
-            // Permitir apenas letras
-            if (/^[a-zA-Z]*$/.test(value)) { // Regex que permite apenas letras
+            if (/^[a-zA-Z]*$/.test(value)) { 
                 setSearchInput(value);
             }
         } else {
-            // Se nenhum tipo de pesquisa estiver selecionado, apenas atualize o input
             setSearchInput(value);
         }
     };
