@@ -83,6 +83,26 @@ const PokemonList = () => {
         setSearchInput('');
     };
 
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+
+        // Verifique o tipo de pesquisa e valide a entrada
+        if (searchType === 'id') {
+            // Permitir apenas números
+            if (/^\d*$/.test(value)) { // Regex que permite apenas dígitos
+                setSearchInput(value);
+            }
+        } else if (searchType === 'name') {
+            // Permitir apenas letras
+            if (/^[a-zA-Z]*$/.test(value)) { // Regex que permite apenas letras
+                setSearchInput(value);
+            }
+        } else {
+            // Se nenhum tipo de pesquisa estiver selecionado, apenas atualize o input
+            setSearchInput(value);
+        }
+    };
+
     if (loading && !pokemons.length) {
         return <p className='await-pokemons-list'>Carregando Pokémons...</p>;
     }
@@ -99,18 +119,18 @@ const PokemonList = () => {
                 <div className="pokemon-container lined-background">
                     <div className='search-container'>
                         <div className='search-items'>
-                        <input
-                            type='text'
-                            placeholder='Pesquise por ID ou Nome'
-                            value={searchInput}
-                            onChange={(e) => setSearchInput(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
-                        <select onChange={(e) => setSearchType(e.target.value)} value={searchType}>
-                            <option value=''>Selecione o tipo de pesquisa</option>
-                            <option value='id'>ID</option>
-                            <option value='name'>Nome</option>
-                        </select>
+                            <input
+                                type='text'
+                                placeholder='Pesquise por ID ou Nome'
+                                value={searchInput}
+                                onChange={handleInputChange} // Use a nova função para validação
+                                onKeyDown={handleKeyDown}
+                            />
+                            <select onChange={(e) => setSearchType(e.target.value)} value={searchType}>
+                                <option value=''>Selecione o tipo de pesquisa</option>
+                                <option value='id'>ID</option>
+                                <option value='name'>Nome</option>
+                            </select>
                         </div>
                         <button onClick={handleSearch}>Buscar</button>
                         <button onClick={handleResetSearch}>Resetar</button>
@@ -128,14 +148,29 @@ const PokemonList = () => {
                         ))}
                     </div>
                 </div>
-                <Botao bkgC={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hoverBkgC={"#85db85"} hoverBfBxShC={"#193619"} functionClick={loadMorePokemons} value="Carregar Mais" />
+                <Botao 
+                    bkgC={"#90EE90"} 
+                    borderC={"rgb(36, 79, 36)"} 
+                    befBkgC={"#6bbb6b"} 
+                    befBoxShC={"rgb(36, 79, 36)"} 
+                    hoverBkgC={"#85db85"} 
+                    hoverBfBxShC={"#193619"} 
+                    functionClick={loadMorePokemons} 
+                    value="Carregar Mais" 
+                />
             </div>
             <div className='pokemon-information'>
                 <PokemonCard pokemon={selectedPokemon} />
                 <Botao
-                    bkgC={"#90EE90"} borderC={"rgb(36, 79, 36)"} befBkgC={"#6bbb6b"} befBoxShC={"rgb(36, 79, 36)"} hoverBkgC={"#85db85"} hoverBfBxShC={"#193619"}
+                    bkgC={"#90EE90"} 
+                    borderC={"rgb(36, 79, 36)"} 
+                    befBkgC={"#6bbb6b"} 
+                    befBoxShC={"rgb(36, 79, 36)"} 
+                    hoverBkgC={"#85db85"} 
+                    hoverBfBxShC={"#193619"}
                     functionClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
-                    disabled={!selectedPokemon} value="Saiba Mais"
+                    disabled={!selectedPokemon} 
+                    value="Saiba Mais"
                 />
             </div>
         </ContainerPokedex>

@@ -7,7 +7,7 @@ import muteIcon from '../../img/mute.png';
 import soundIcon from '../../img/volume.png';
 
 function AudioPlayer() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [prevVolume, setPrevVolume] = useState(0.5);
   const audioRef = useRef(null);
