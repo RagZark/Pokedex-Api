@@ -91,7 +91,7 @@ const PokemonList = () => {
                 setSearchInput(value);
             }
         } else if (searchType === 'name') {
-            if (/^[a-zA-Z]*$/.test(value)) { 
+            if (/^[a-zA-Z]*$/.test(value)) {
                 setSearchInput(value);
             }
         } else {
@@ -123,13 +123,15 @@ const PokemonList = () => {
                                 onKeyDown={handleKeyDown}
                             />
                             <select onChange={(e) => setSearchType(e.target.value)} value={searchType}>
-                                <option value=''>Selecione o tipo de pesquisa</option>
+                                <option value=''>Selecione</option>
                                 <option value='id'>ID</option>
                                 <option value='name'>Nome</option>
                             </select>
                         </div>
-                        <button onClick={handleSearch}>Buscar</button>
-                        <button onClick={handleResetSearch}>Resetar</button>
+                        <div className='search-buttons'>
+                            <button className='search' onClick={handleSearch}>Buscar</button>
+                            <button className='reset' onClick={handleResetSearch}>Resetar</button>
+                        </div>
                     </div>
                     <div className="pokemon-list" ref={containerRef}>
                         {displayedPokemons.map((pokemon) => (
@@ -144,28 +146,30 @@ const PokemonList = () => {
                         ))}
                     </div>
                 </div>
-                <Botao 
-                    bkgC={"#90EE90"} 
-                    borderC={"rgb(36, 79, 36)"} 
-                    befBkgC={"#6bbb6b"} 
-                    befBoxShC={"rgb(36, 79, 36)"} 
-                    hoverBkgC={"#85db85"} 
-                    hoverBfBxShC={"#193619"} 
-                    functionClick={loadMorePokemons} 
-                    value="Carregar Mais" 
+                <Botao
+                    bkgC={"#90EE90"}
+                    borderC={"rgb(36, 79, 36)"}
+                    befBkgC={"#6bbb6b"}
+                    befBoxShC={"rgb(36, 79, 36)"}
+                    hoverBkgC={"#85db85"}
+                    hoverBfBxShC={"#193619"}
+                    functionClick={loadMorePokemons}
+                    heightTablet={"40px"} widthTablet={"140px"}
+                    value="Carregar Mais"
                 />
             </div>
             <div className='pokemon-information'>
-                <PokemonCard pokemon={selectedPokemon} />
+                <PokemonCard className="pokemon-card" pokemon={selectedPokemon} />
                 <Botao
-                    bkgC={"#90EE90"} 
-                    borderC={"rgb(36, 79, 36)"} 
-                    befBkgC={"#6bbb6b"} 
-                    befBoxShC={"rgb(36, 79, 36)"} 
-                    hoverBkgC={"#85db85"} 
+                    bkgC={"#90EE90"}
+                    borderC={"rgb(36, 79, 36)"}
+                    befBkgC={"#6bbb6b"}
+                    befBoxShC={"rgb(36, 79, 36)"}
+                    hoverBkgC={"#85db85"}
                     hoverBfBxShC={"#193619"}
                     functionClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
-                    disabled={!selectedPokemon} 
+                    heightTablet={"40px"} widthTablet={"140px"}
+                    disabled={!selectedPokemon}
                     value="Saiba Mais"
                 />
             </div>

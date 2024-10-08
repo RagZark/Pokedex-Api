@@ -5,7 +5,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: inherit;
     font-family: 'Pokemon Fire Red', sans-serif;
     touch-action: manipulation;
     font-weight: 600;
@@ -16,8 +15,6 @@
     border-radius: 0.75em;
     transform-style: preserve-3d;
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
-    height: 40px;
-    width: 180px;
 }
 .button-style::before {
     position: absolute;

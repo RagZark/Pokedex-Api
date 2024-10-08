@@ -15,7 +15,7 @@ const Rodape = () => {
 }
 
 const RodapeUse = styled.footer`
-    height: 70px;
+    height: 150px;
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: inset 0px 8px 8px 2px rgba(0, 0, 0, .75);

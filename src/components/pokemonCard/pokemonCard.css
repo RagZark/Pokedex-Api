@@ -42,7 +42,6 @@
 
 .pokemon-details-specify img {
     height: 300px;
-    width: 300px;
     border: 2px solid black;
     border-radius: 8px;
     background-image:
@@ -70,4 +69,19 @@
 
 .pokemon-checkbox label {
     cursor: pointer;
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+    .pokemon-details {
+        width: 320px;
+        height: 450px;
+    }
+    .pokemon-details-specify img {
+        height: 240px;
+    }
+    .pokemon-details-specify h1{
+        font-size: 32px;
+    }
+    
+    
 }

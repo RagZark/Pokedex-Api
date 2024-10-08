@@ -16,10 +16,13 @@ const Pokedex = () => {
 
 const ContainerPokedex = styled.div`
     background-color: ${props => props.backgroundColor};
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh; 
     width: 100%;
     box-shadow: inset 0 0 8px 8px rgba(0, 0, 0, .75);
-    padding: 90px 0 0 90px;
+    padding: 90px;
 `;
 
 export default Pokedex;

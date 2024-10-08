@@ -37,13 +37,13 @@ const Navbar = () => {
         <Cabecalho style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundColor: backgroundColor }}>
             <Lista>
                 <ItemLista>
-                    <Botao {...botaoProps} value={"Change Pokedex"} functionClick={changePokedex}></Botao>
+                    <Botao heightTablet={"40px"} widthTablet={"140px"} {...botaoProps} value={"Change Pokedex"} functionClick={changePokedex}></Botao>
                 </ItemLista>
                 <ItemLista>
-                    <Botao bkgC={"#d1a000"} borderC={"#403100"} befBkgC={"#856600"} befBoxShC={"#403100"} hoverBkgC={"#ffc300"} hoverBfBxShC={"#5c4600"} value={"Chose Pokedex"} functionClick={homeClick}></Botao>
+                    <Botao heightTablet={"40px"} widthTablet={"140px"} bkgC={"#d1a000"} borderC={"#403100"} befBkgC={"#856600"} befBoxShC={"#403100"} hoverBkgC={"#ffc300"} hoverBfBxShC={"#5c4600"} value={"Chose Pokedex"} functionClick={homeClick}></Botao>
                 </ItemLista>
                 <ItemLista>
-                    <Botao bkgC={"#479154"} borderC={"#162e1a"} befBkgC={"#2b5c33"} befBoxShC={"#162e1a"} hoverBkgC={"#61ba71"} hoverBfBxShC={"#214527"} value={"Pokedex Page"} functionClick={pokedexClick}></Botao>
+                    <Botao heightTablet={"40px"} widthTablet={"140px"} bkgC={"#479154"} borderC={"#162e1a"} befBkgC={"#2b5c33"} befBoxShC={"#162e1a"} hoverBkgC={"#61ba71"} hoverBfBxShC={"#214527"} value={"Pokedex Page"} functionClick={pokedexClick}></Botao>
                 </ItemLista>
             </Lista>
         </Cabecalho>

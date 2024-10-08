@@ -73,6 +73,12 @@ const EstiloTipo = styled.li`
     font-size: 20px;
     font-weight: 600;
     letter-spacing: 1px;
+
+    @media (min-width: 769px) and (max-width: 1440px) {
+        width: 100px;
+        height: 34px;
+        font-size: 18px;
+    }
 `
 
 export default TypesPokemon;
