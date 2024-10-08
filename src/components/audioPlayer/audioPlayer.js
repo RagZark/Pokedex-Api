@@ -48,7 +48,7 @@ function AudioPlayer() {
       </VolumeButton>
       <VolumeControlContainer>
         <VolumeControl onClick={toggleMute}>
-          <img src={volumeIcon} alt={volume === 0 ? 'Mute' : 'Sound'} style={{ width: '30px', height: '30px' }} />
+          <img src={volumeIcon} alt={volume === 0 ? 'Mute' : 'Sound'} style={{ width: '25px', height: '25px' }} />
         </VolumeControl>
         <VolumeInput
           type="range"
@@ -91,6 +91,11 @@ const VolumeButton = styled.button`
   &:hover {
     background-color: #FFFFFF;
   }
+
+    @media (max-width: 480px) {
+     width: 50px;
+     height: 50px;
+}
 `;
 
 const VolumeControlContainer = styled.div`
@@ -120,6 +125,11 @@ const VolumeControl = styled.div`
     opacity: 1;
     width: 100px;
   }
+
+    @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+}
 `;
 
 const VolumeInput = styled.input`
@@ -131,7 +141,7 @@ const VolumeInput = styled.input`
   transform: rotate(-90deg);
   transform-origin: left bottom;
   left: 55px;
-  bottom: 490px;
+  bottom: 54%;
 
   -webkit-appearance: none;
   background: rgba(0, 0, 0, 0.5);
@@ -174,6 +184,15 @@ const VolumeInput = styled.input`
     opacity: 1;
     width: 100px;
   }
+
+   @media (min-width: 481px) and (max-width: 850px) {
+    bottom: 53%;
+  }
+}
+  @media (max-width: 480px) {
+    bottom: 52%;
+}
+
 `;
 
 export default AudioPlayer;
