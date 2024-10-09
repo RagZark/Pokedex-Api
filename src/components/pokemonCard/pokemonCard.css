@@ -81,7 +81,33 @@
     }
     .pokemon-details-specify h1{
         font-size: 32px;
+    }   
+}
+
+@media (min-width: 769px) and (max-width: 1119px) {
+
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .pokemon-details {
+        width: 360px;
+        height: 400px;
     }
-    
-    
+    .pokemon-details-specify img {
+        height: 200px;
+    }
+    .pokemon-details-specify h1{
+        font-size: 32px;
+    } 
+    .pokemon-checkbox label {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+}
+  
+  @media (max-width: 375px) {
+
 }

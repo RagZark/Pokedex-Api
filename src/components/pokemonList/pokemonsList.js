@@ -154,8 +154,8 @@ const PokemonList = () => {
                     hoverBkgC={"#85db85"}
                     hoverBfBxShC={"#193619"}
                     functionClick={loadMorePokemons}
-                    heightTablet={"40px"} widthTablet={"140px"}
-                    value="Carregar Mais"
+                    heightTablet={"30px"} widthTablet={"80px"}
+                    value="Mais"
                 />
             </div>
             <div className='pokemon-information'>
@@ -168,9 +168,9 @@ const PokemonList = () => {
                     hoverBkgC={"#85db85"}
                     hoverBfBxShC={"#193619"}
                     functionClick={() => selectedPokemon && navigate(`/pokedex/${selectedPokemon.id}`, selectedPokemon)}
-                    heightTablet={"40px"} widthTablet={"140px"}
+                    heightTablet={"30px"} widthTablet={"80px"}
                     disabled={!selectedPokemon}
-                    value="Saiba Mais"
+                    value="Mais"
                 />
             </div>
         </ContainerPokedex>

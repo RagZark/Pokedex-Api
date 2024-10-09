@@ -28,7 +28,7 @@ const BotaoStyled = styled.button`
         box-shadow: 0 0 0 2.5px ${props => props.hoverBeforeBoxShColor};
     }
 
-    @media (min-width: 769px) and (max-width: 1119px) {
+    @media (min-width: 768px) and (max-width: 1119px) {
     font-size:${props => props.fontSizeTablet || props.fontSize || "14px"};
     width: ${props => props.widthTablet || props.width || "180px"};
     height: ${props => props.heightTablet || props.height || "40px"};
