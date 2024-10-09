@@ -158,12 +158,8 @@ const Grid = styled.ul`
                 return "repeat(1, 1fr)";
         }
     }};
-  }
-    
-    @media (max-width: 375px) {
-
-  }
-  
+  }  
+ 
 `;
 
 const Evolutions = styled.div`
