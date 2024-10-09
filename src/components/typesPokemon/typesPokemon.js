@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const TypesPokemon = ({ pokemon }) => {
+const TypesPokemon = ({ pokemon, isRow }) => {
     const getTextColor = (hexColor) => {
         hexColor = hexColor.replace('#', '');
 
@@ -40,7 +40,7 @@ const TypesPokemon = ({ pokemon }) => {
     }
 
     return (
-        <ListaTipos>
+        <ListaTipos isRow={isRow} className={props => props.classe}>
             {pokemon.types.map((typeInfo, index) => {
                 const backgroundColor = colours[typeInfo];
                 const textColor = getTextColor(backgroundColor)
@@ -66,7 +66,8 @@ const ListaTipos = styled.ul`
     @media (max-width: 480px) {
         display: flex;
         align-items: center;
-        flex-direction: column;
+        flex-direction: ${props => (props.isRow ? "row" : "column")};
+    }
     }
 `
 

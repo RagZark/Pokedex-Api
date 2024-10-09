@@ -97,6 +97,7 @@
     .pokemon-evo-design {
         height: 100px;
         width: 200px;
+        padding: 40px 0;
     }
     .pokemon-evo-design p{
         font-size: 14px;

@@ -33,7 +33,7 @@ const PokemonEvolutions = ({ pokemon }) => {
                     >
                         <img src={evolution.imageAndTypes.frontDefault} alt={evolution.name}></img>
                         <p>{formattedName(evolution.name)} #{formattedId(evolution.id)}</p>
-                        <TypesPokemon pokemon={evolution.imageAndTypes} />
+                        <TypesPokemon isRow={true} pokemon={evolution.imageAndTypes} />
                     </li>
                 ))}
             </Grid>
@@ -49,7 +49,7 @@ const PokemonEvolutions = ({ pokemon }) => {
                             <li key={secondEvo.id} className="second-evo pokemon-evo-design" onClick={() => handleClick(secondEvo.id)}>
                                 <img src={secondEvo.imageAndTypes.frontDefault} alt={secondEvo.name}></img>
                                 <p>{formattedName(secondEvo.name)} #{formattedId(secondEvo.id)}</p>
-                                <TypesPokemon pokemon={secondEvo.imageAndTypes} />
+                                <TypesPokemon isRow={true} pokemon={secondEvo.imageAndTypes} />
                             </li>
                         ))
                     )
@@ -63,7 +63,7 @@ const PokemonEvolutions = ({ pokemon }) => {
             <div className="original-pokemon pokemon-evo-design" onClick={() => handleClick(pokemon.evolutions.originalPokemon.id)}>
                 <img src={pokemon.evolutions.originalPokemon.imageAndTypes.frontDefault} alt={pokemon.evolutions.originalPokemon.name}></img>
                 <p>{formattedName(pokemon.evolutions.originalPokemon.name)} #{formattedId(pokemon.evolutions.originalPokemon.id)}</p>
-                <TypesPokemon pokemon={pokemon.evolutions.originalPokemon.imageAndTypes} />
+                <TypesPokemon isRow={true} pokemon={pokemon.evolutions.originalPokemon.imageAndTypes} />
             </div>
             <div className="pokemon-evolutions">
                 {firstEvolutions(pokemon.evolutions.firstEvolution)}
@@ -77,7 +77,6 @@ const Grid = styled.ul`
     display: grid;
     gap: 10px;
     overflow-y: auto;
-    max-height: 400px;
 
     &::-webkit-scrollbar {
         color: transparent;
@@ -150,8 +149,7 @@ const Grid = styled.ul`
   
     @media (max-width: 480px) {
         grid-template-columns: 1fr; 
-        overflow-y: auto;
-        max-height: 400px;
+        overflow: visible;
   }  
  
 `;
@@ -162,10 +160,10 @@ const Evolutions = styled.div`
     overflow-y: auto;
 
     @media (max-width: 480px) {
-        overflow: hidden;
+        overflow: visible;
+        width: 90%
         height: 400px;
-        flex-direction: column;
-
+        flex-direction: column; 
     }
 `
 
