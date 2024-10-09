@@ -59,7 +59,7 @@ const PokemonEvolutions = ({ pokemon }) => {
     };
 
     return (
-        <Evolutions display={props => props.displayTabletEvolutions}>
+        <Evolutions heightCellEvo={props => props.heightCellEvos}>
             <div className="original-pokemon pokemon-evo-design" onClick={() => handleClick(pokemon.evolutions.originalPokemon.id)}>
                 <img src={pokemon.evolutions.originalPokemon.imageAndTypes.frontDefault} alt={pokemon.evolutions.originalPokemon.name}></img>
                 <p>{formattedName(pokemon.evolutions.originalPokemon.name)} #{formattedId(pokemon.evolutions.originalPokemon.id)}</p>
@@ -162,7 +162,10 @@ const Evolutions = styled.div`
     overflow-y: auto;
 
     @media (max-width: 480px) {
+        overflow: hidden;
+        height: 400px;
         flex-direction: column;
+
     }
 `
 
