@@ -77,9 +77,12 @@ const Grid = styled.ul`
     display: grid;
     gap: 10px;
     overflow-y: auto;
+    max-height: 400px;
+
     &::-webkit-scrollbar {
-    color: transparent;
-}
+        color: transparent;
+    }
+
         grid-template-columns: ${({ evolutionsLength }) => {
         switch (evolutionsLength) {
             case 1:
@@ -146,18 +149,9 @@ const Grid = styled.ul`
   }
   
     @media (max-width: 480px) {
-            grid-template-columns: ${({ evolutionsLength }) => {
-        switch (evolutionsLength) {
-            case 1:
-                return "1fr";
-            case 2:
-                return "repeat(1, 1fr)";
-            case 3:
-                return "repeat(1, 1fr)";
-            default:
-                return "repeat(1, 1fr)";
-        }
-    }};
+        grid-template-columns: 1fr; 
+        overflow-y: auto;
+        max-height: 400px;
   }  
  
 `;
@@ -167,9 +161,6 @@ const Evolutions = styled.div`
     align-items: center;
     overflow-y: auto;
 
-    @media (min-width: 481px) and (max-width: 884px) {
-    display: ${props => props.display};
-  }
     @media (max-width: 480px) {
         flex-direction: column;
     }

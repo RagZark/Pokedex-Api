@@ -74,3 +74,23 @@
         width: 155px;
     }
 }
+
+
+@media (max-width: 480px) {
+    .pokemon-evolutions{
+        flex-direction: column;
+    }
+    .pokemon-evo-design img {
+        height: 50px;
+    }
+    .pokemon-evo-design ul li {
+        height: 20px;
+        width: 60px;
+        font-size: 12px;
+        text-align: center;
+    }
+    .pokemon-evo-design {
+        height: 160px;
+        width: 200px;
+    }
+}
