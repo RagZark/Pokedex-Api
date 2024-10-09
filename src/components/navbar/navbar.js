@@ -44,13 +44,13 @@ const Navbar = () => {
             </MobileMenu>
             <Lista className={isActive ? "active" : ''}>
                 <ItemLista>
-                    <Botao heightTablet={"40px"} widthTablet={"140px"} {...botaoProps} value={"Change Pokedex"} functionClick={changePokedex}></Botao>
+                    <Botao heightTablet={"40px"} widthTablet={"140px"} {...botaoProps} value={"Change Pokedex"} heightPhone={"30px"} widthPhone={"100px"} fontSizePhone={"12px"} functionClick={changePokedex}></Botao>
                 </ItemLista>
                 <ItemLista>
-                    <Botao heightTablet={"40px"} widthTablet={"140px"} bkgC={"#d1a000"} borderC={"#403100"} befBkgC={"#856600"} befBoxShC={"#403100"} hoverBkgC={"#ffc300"} hoverBfBxShC={"#5c4600"} value={"Chose Pokedex"} functionClick={homeClick}></Botao>
+                    <Botao heightTablet={"40px"} widthTablet={"140px"} bkgC={"#d1a000"} borderC={"#403100"} befBkgC={"#856600"} befBoxShC={"#403100"} hoverBkgC={"#ffc300"} hoverBfBxShC={"#5c4600"} value={"Chose Pokedex"} heightPhone={"30px"} widthPhone={"100px"} fontSizePhone={"12px"}  functionClick={homeClick}></Botao>
                 </ItemLista>
                 <ItemLista>
-                    <Botao heightTablet={"40px"} widthTablet={"140px"} bkgC={"#479154"} borderC={"#162e1a"} befBkgC={"#2b5c33"} befBoxShC={"#162e1a"} hoverBkgC={"#61ba71"} hoverBfBxShC={"#214527"} value={"Pokedex Page"} functionClick={pokedexClick}></Botao>
+                    <Botao heightTablet={"40px"} widthTablet={"140px"} bkgC={"#479154"} borderC={"#162e1a"} befBkgC={"#2b5c33"} befBoxShC={"#162e1a"} hoverBkgC={"#61ba71"} hoverBfBxShC={"#214527"} value={"Pokedex Page"} heightPhone={"30px"} widthPhone={"100px"} fontSizePhone={"12px"}  functionClick={pokedexClick}></Botao>
                 </ItemLista>
             </Lista>
         </Cabecalho>
@@ -69,7 +69,7 @@ const Cabecalho = styled.header`
 }
 
     @media (max-width: 480px) {
-
+    position: relative;
 }
   
     @media (max-width: 375px) {
@@ -95,6 +95,7 @@ const Lista = styled.ul`
     background-color: rgba(0, 0, 0, 0.5);
     left: 60%;
     top: 25%;
+    z-index: 10;
 
     &.active{
     display: block;
@@ -102,11 +103,39 @@ const Lista = styled.ul`
 }
 
     @media (max-width: 480px) {
+    display: none;
+    padding-bottom: 28vh;
+    height: 300px;
+    width: 240px;
+    position: absolute;
+    border: 2px solid #fafad4;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    left: 20%;
+    top: 80%;
+    z-index: 10;
 
+    &.active{
+    display: block;
+    }
 }
   
     @media (max-width: 375px) {
+    display: none;
+    padding-bottom: 30vh;
+    height: 300px;
+    width: 240px;
+    position: absolute;
+    border: 2px solid #fafad4;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    left: 20%;
+    top: 80%;
+    z-index: 10;
 
+    &.active{
+    display: block;
+    }
 }
 
 `;
@@ -122,25 +151,43 @@ const ItemLista = styled.li`
 }
 
     @media (max-width: 480px) {
-
+    justify-content: center;
+    margin-right: 0;
 }
   
     @media (max-width: 375px) {
-
+    justify-content: center;
+    margin-right: 0;
 }
 `;
 
 const MobileMenu = styled.div`
     display: none;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
+
 
     @media (min-width: 481px) and (max-width: 768px) {
     display: block;
     position: absolute;
     top: 60%;
     right: 2%;
-    transition: 0.3s ease-in-out;
     }
+
+    @media (max-width: 480px) {
+    display: block;
+    position: absolute;
+    top: 60%;
+    right: 2%;
+
+}
+  
+    @media (max-width: 375px) {
+    display: block;
+    position: absolute;
+    top: 60%;
+    right: 2%;
+}
 }
 `
 

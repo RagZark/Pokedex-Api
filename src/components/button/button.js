@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Botao = (props) => {
     return(
-        <BotaoStyled className="button-style" width={props.width} height={props.height} bgkColor={props.bkgC} borderColor={props.borderC} beforeBkgColor={props.befBkgC} beforeBoxShColor={props.befBoxShC} hoverBkgColor={props.hoverBkgC} hoverBeforeBoxShColor={props.hoverBfBxShC} onClick={props.functionClick} fontSize={props.fontSize} fontSizeTablet={props.fontSizeTablet} widthTablet={props.widthTablet} heightTablet={props.heightTablet}>{props.value}</BotaoStyled>
+        <BotaoStyled className="button-style" width={props.width} height={props.height} bgkColor={props.bkgC} borderColor={props.borderC} beforeBkgColor={props.befBkgC} beforeBoxShColor={props.befBoxShC} hoverBkgColor={props.hoverBkgC} hoverBeforeBoxShColor={props.hoverBfBxShC} onClick={props.functionClick} fontSize={props.fontSize} fontSizeTablet={props.fontSizeTablet} widthTablet={props.widthTablet} heightTablet={props.heightTablet} fontSizePhone={props.fontSizePhone} heightPhone={props.heightPhone} widthPhone={props.widthPhone}>{props.value}</BotaoStyled>
     )
 }
 
@@ -33,6 +33,13 @@ const BotaoStyled = styled.button`
     width: ${props => props.widthTablet || props.width || "180px"};
     height: ${props => props.heightTablet || props.height || "40px"};
     }
+
+    @media (max-width: 480px) {
+    font-size:${props => props.fontSizePhone || props.fontSizeTablet || props.fontSize || "14px"};
+    width: ${props => props.widthPhone || props.widthTablet || props.width || "180px"};
+    height: ${props => props.heightPhone || props.heightTablet || props.height || "40px"};
+}
+  
 `
 
 export default Botao

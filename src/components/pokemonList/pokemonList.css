@@ -132,7 +132,7 @@
 }
 
 .pokemon-item img {
-  height: 100px;
+  height: 10vh;
 }
 
 .pokemon-item:hover {
@@ -159,7 +159,7 @@
   margin-top: 8px;
 }
 
-@media (min-width: 1200px) and (max-width: 1440px) {
+@media (min-width: 1025px) and (max-width: 1440px) {
   .pokemon-main {
     width: 720px;
   }
@@ -170,9 +170,6 @@
   .pokemon-item{
     width: 100px;
     height: 120px;
-  }
-  .pokemon-item img {
-    height: 80px;
   }
   .pokemon-name {
     font-size: 16px;
@@ -182,20 +179,18 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1119px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .pokemon-main {
-    width: 720px;
+    width: 100%;
   }
   .pokemon-container{
     height: 450px;
-    margin-right: 30px;
+    width: 450px;
+
   }
   .pokemon-item{
     width: 100px;
     height: 120px;
-  }
-  .pokemon-item img {
-    height: 80px;
   }
   .pokemon-list {
     grid-template-columns: repeat(3, 1fr);
@@ -204,7 +199,7 @@
   .pokemon-name {
     font-size: 16px;
   }
-.search-container{
+  .search-container{
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 48px;
@@ -218,7 +213,7 @@
   .search-buttons button{
     height: 30px;
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 0.58px;
   }
   .search-buttons :nth-child(2){
@@ -251,9 +246,6 @@
     width: 100px;
     height: 120px;
   }
-  .pokemon-item img {
-    height: 80px;
-  }
   .pokemon-name {
     font-size: 16px;
   }
@@ -284,9 +276,68 @@
 }
 
 @media (max-width: 480px) {
-
+  .pokemon-list-details{
+    flex-direction: column-reverse;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .pokemon-main {
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    height: 400px;
+  }
+  .pokemon-container{
+    height: 450px;
+    margin: 0;
+  }
+  .pokemon-list {
+    margin-top: 40px;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+  .pokemon-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    width: 100%;
+  }
+  .pokemon-name {
+    margin-top: 100px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .search-container{
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 48px;
+  }
+  .search-items{
+    width: 100%;
+    margin-bottom: 40px ;
+  }
+  .search-buttons{
+    margin: 10px 0;
+  }
+  .search-buttons button{
+    height: 30px;
+    margin: 0;
+    font-size: 16px;
+    letter-spacing: 0.58px;
+  }
+  .search-buttons :nth-child(2){
+    margin-left: 8px;
+  }
+  .pokemon-information{
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
 }
   
   @media (max-width: 375px) {
-
+    .pokemon-container{
+      height: 300px;
+    }
 }

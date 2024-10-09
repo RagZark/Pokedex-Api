@@ -40,7 +40,7 @@ const TypesPokemon = ({ pokemon }) => {
     }
 
     return (
-        <ul>
+        <ListaTipos>
             {pokemon.types.map((typeInfo, index) => {
                 const backgroundColor = colours[typeInfo];
                 const textColor = getTextColor(backgroundColor)
@@ -58,9 +58,17 @@ const TypesPokemon = ({ pokemon }) => {
                     </EstiloTipo>
                 );
             })}
-        </ul>
+        </ListaTipos>
     );
 };
+
+const ListaTipos = styled.ul`
+    @media (max-width: 480px) {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+`
 
 const EstiloTipo = styled.li`
     width: ${props => props.largura || "120px"};
@@ -78,6 +86,12 @@ const EstiloTipo = styled.li`
         width: 100px;
         height: 34px;
         font-size: 18px;
+    }
+    
+    @media (max-width: 480px) {
+        width: 100px;
+        height: 28px;
+        font-size: 16px;
     }
 `
 
