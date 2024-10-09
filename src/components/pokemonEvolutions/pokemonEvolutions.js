@@ -148,8 +148,18 @@ const Grid = styled.ul`
   }
   
     @media (max-width: 480px) {
-        grid-template-columns: 1fr; 
-        overflow: visible;
+         grid-template-columns: ${({ evolutionsLength }) => {
+        switch (evolutionsLength) {
+            case 1:
+                return "1fr";
+            case 2:
+                return "repeat(1, 1fr)";
+            case 3:
+                return "repeat(1, 1fr); overflow: visible;";
+            default:
+                return "repeat(1, 1fr); overflow: visible;";
+        }
+    }};
   }  
  
 `;
