@@ -1,5 +1,6 @@
 .ability-container{
     height: 40vh;
+    width: 100%;
 }
 .ability-list {
     overflow-y: auto;

@@ -7,10 +7,12 @@
     justify-items: center;
     list-style: none;
     overflow-y: auto;
+    color: #65FFA2;
+    font-weight: 600;
 }
 
 .moves-list::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
   
 .moves-list::-webkit-scrollbar-track {
@@ -37,4 +39,10 @@
     text-align: center;
     padding: 4px;
     background: linear-gradient(90deg, rgba(156,156,156,0.5) 0%, rgba(219,219,219,0.5) 35%, rgba(156,156,156,0.5) 100%);
+}
+
+@media (max-width: 480px) {
+  .moves-list{
+    grid-template-columns: repeat(1, 1fr);
+}
 }

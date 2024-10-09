@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PokemonAbilities from '../pokemonAbilities/pokemonAbilities.js';
 import './pokemonInfo.css'
 import usePokemonFullData from '../usemodels/usePokemonFullData.js';
@@ -8,7 +8,9 @@ import PokemonMoves from '../pokemonMoves/pokemonMoves.js';
 
 const PokemonInfo = ({ id }) => {
   const { pokemonData: pokemon, loading, error } = usePokemonFullData(id);
-
+  const [showMoves, setShowMoves] = useState(false);
+  const [showAbilities, setShowAbilities] = useState(false);
+  const [showEvolutions, setShowEvolutions] = useState(false);
   if (loading) {
     return <p>Carregando Pokémon...</p>;
   }
@@ -25,17 +27,23 @@ const PokemonInfo = ({ id }) => {
     <div className='pokemon-info'>
       <PokemonCard pokemon={pokemon} />
       <div className='pokemon-more-information'>
-        <div className='moves-container lined-background-pokeInfo'>
+        <div onClick={() => setShowMoves(!showMoves)} className='moves-container lined-background-pokeInfo'>
           <h2>Moves</h2>
-          <PokemonMoves pokemon={pokemon} />
+          <div className={showMoves ? "visible" : "hidden"}>
+            <PokemonMoves pokemon={pokemon} />
+          </div>
         </div>
-        <div className='abilities-container lined-background-pokeInfo'>
+        <div onClick={() => setShowAbilities(!showAbilities)} className='abilities-container lined-background-pokeInfo'>
           <h2>Habilidades</h2>
-          <PokemonAbilities pokemon={pokemon} />
+          <div className={showAbilities ? "visible" : "hidden"}>
+            <PokemonAbilities pokemon={pokemon} />
+          </div>
         </div>
-        <div className='pokemon-container-evolutions lined-background-pokeInfo'>
-          <h2>Evoluções</h2>
-          <PokemonEvolutions pokemon={pokemon} />
+        <div onClick={() => setShowEvolutions(!showEvolutions)} className='pokemon-container-evolutions lined-background-pokeInfo'>
+          <h2 >Evoluções</h2>
+          <div className={showEvolutions ? "visible" : "hidden"}>
+            <PokemonEvolutions pokemon={pokemon} />
+          </div>
         </div>
       </div>
     </div>

@@ -104,7 +104,7 @@ const Lista = styled.ul`
 
     @media (max-width: 480px) {
     display: none;
-    padding-bottom: 28vh;
+    padding-bottom: 30vh;
     height: 300px;
     width: 240px;
     position: absolute;
