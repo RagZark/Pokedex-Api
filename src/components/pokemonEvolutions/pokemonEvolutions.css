@@ -103,3 +103,23 @@
         font-size: 14px;
     }
 }
+
+@media (max-width: 375px){
+    .pokemon-evo-design img {
+        height: 55px;
+    }
+    .pokemon-evo-design ul li {
+        height: 16px;
+        width: 48px;
+        font-size: 7px;
+        text-align: center;
+    }
+    .pokemon-evo-design {
+        height: 95px;
+        width: 90px;
+        padding: 40px 0;
+    }
+    .pokemon-evo-design p{
+        font-size: 12px;
+    }
+}

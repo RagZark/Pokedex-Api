@@ -90,7 +90,7 @@ const EstiloTipo = styled.li`
     }
     
     @media (max-width: 480px) {
-        height: 28px;
+        height: 28dpx;
         font-size: 16px;
     }
 `
