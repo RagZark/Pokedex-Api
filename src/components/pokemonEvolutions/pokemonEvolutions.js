@@ -26,11 +26,7 @@ const PokemonEvolutions = ({ pokemon }) => {
         return (
             <Grid evolutionsLength={pokemonFirstEvolutions.length}>
                 {pokemonFirstEvolutions.map((evolution) => (
-                    <li
-                        key={evolution.id}
-                        className={"first-evo pokemon-evo-design"}
-                        onClick={() => handleClick(evolution.id)}
-                    >
+                    <li key={evolution.id} className={"first-evo pokemon-evo-design"} onClick={() => handleClick(evolution.id)}>
                         <img src={evolution.imageAndTypes.frontDefault} alt={evolution.name}></img>
                         <p>{formattedName(evolution.name)} #{formattedId(evolution.id)}</p>
                         <TypesPokemon isRow={true} pokemon={evolution.imageAndTypes} />
@@ -41,8 +37,12 @@ const PokemonEvolutions = ({ pokemon }) => {
     };
 
     const secondEvolutions = (pokemonFirstEvolutions) => {
+        const pokemonFirstMap = pokemonFirstEvolutions.map((evolution) => evolution.secondEvolution);
+        const pokemonSecondMap = pokemonFirstMap.flat(); // Para achatar a matriz de matrizes
+        console.log(pokemonSecondMap.length);
+
         return (
-            <Grid evolutionsLength={pokemonFirstEvolutions.length}>
+            <Grid evolutionsLength={pokemonSecondMap.length}>
                 {pokemonFirstEvolutions.map((evolution) => (
                     Array.isArray(evolution.secondEvolution) && evolution.secondEvolution.length > 0 && (
                         evolution.secondEvolution.map((secondEvo) => (
@@ -59,7 +59,7 @@ const PokemonEvolutions = ({ pokemon }) => {
     };
 
     return (
-        <Evolutions heightCellEvo={props => props.heightCellEvos}>
+        <Evolutions>
             <div className="original-pokemon pokemon-evo-design" onClick={() => handleClick(pokemon.evolutions.originalPokemon.id)}>
                 <img src={pokemon.evolutions.originalPokemon.imageAndTypes.frontDefault} alt={pokemon.evolutions.originalPokemon.name}></img>
                 <p>{formattedName(pokemon.evolutions.originalPokemon.name)} #{formattedId(pokemon.evolutions.originalPokemon.id)}</p>
@@ -153,7 +153,7 @@ const Grid = styled.ul`
             case 1:
                 return "1fr";
             case 2:
-                return "repeat(1, 1fr); overflow: visible;";
+                return "repeat(2, 1fr); overflow: visible;";
             case 3:
                 return "repeat(1, 1fr); overflow: visible;";
             default:
