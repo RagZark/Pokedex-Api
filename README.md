@@ -52,9 +52,6 @@ Para iniciar um novo projeto React e executar a Pokédex, siga as etapas abaixo:
 7.**Inicie o projeto: Utilize o comando:** npm start.
 
 
-PS.: O pokemon de ID 265 não ficou legal, não achei um jeito de configurar ele direito, mas se você encontrou e quiser compartilhar comigo, fique a vontade.
-
-
 # EN
 
 # Pokédex
@@ -112,5 +109,3 @@ yarn install
 7.	**Start the project:** Use the command:
 npm start
 Now, your Pokédex will be running in the browser.
-
-PS: The Pokémon with ID 265 didn't look good, and I couldn't figure out a proper way to configure it, but if you found a solution and would like to share it with me, feel free to do so.

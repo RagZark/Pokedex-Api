@@ -38,7 +38,7 @@ const PokemonEvolutions = ({ pokemon }) => {
 
     const secondEvolutions = (pokemonFirstEvolutions) => {
         const pokemonFirstMap = pokemonFirstEvolutions.map((evolution) => evolution.secondEvolution);
-        const pokemonSecondMap = pokemonFirstMap.flat(); // Para achatar a matriz de matrizes
+        const pokemonSecondMap = pokemonFirstMap.flat();
         console.log(pokemonSecondMap.length);
 
         return (
