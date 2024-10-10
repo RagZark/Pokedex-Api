@@ -153,7 +153,7 @@ const Grid = styled.ul`
             case 1:
                 return "1fr";
             case 2:
-                return "repeat(1, 1fr)";
+                return "repeat(1, 1fr); overflow: visible;";
             case 3:
                 return "repeat(1, 1fr); overflow: visible;";
             default:
